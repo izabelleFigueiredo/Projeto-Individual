@@ -5,29 +5,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/cadastro.css" />
-    <title>Cadastre-se</title>
+    <title>Cadastre-se | WanoQuest</title>
 </head>
 
 <body>
-    <div class="container">
-        <form id="formulario" class="formulario">
-            <div class="cadastro">
-                <div class="inputs">
-                    <input class="inpt" type="text" id="inpNome" placeholder="Insira seu nome" />
-                    <span id="alertNome" class="msgAlerta"></span>
-                    <input class="inpt" type="email" id="inpEmail" placeholder="Insira seu email" />
-                    <span id="alertEmail" class="msgAlerta"></span>
-                    <input class="inpt" type="password" id="inpSenha" placeholder="Crie sua senha" />
-                    <span id="alertSenha" class="msgAlerta"></span>
-                    <input class="inpt" type="password" id="inpConfirmSenha" placeholder="Confirme sua senha" />
-                    <span id="alertConfirmSenha" class="msgAlerta"></span>
+    <div class="conteudo">
+        <div class="container">
+            <h1><a href="index.html">WanoQuest</a></h1>
+            <form id="formulario" class="formulario">
+                <div class="cadastro">
+                    <h2>Crie uma nova conta</h2>
+                    <div class="inputs">
+                        <input class="inpt" type="text" id="inpNome" placeholder="Insira seu nome" />
+                        <span id="alertNome" class="msgAlerta"></span>
+                        <input class="inpt" type="email" id="inpEmail" placeholder="Insira seu email" />
+                        <span id="alertEmail" class="msgAlerta"></span>
+                        <input class="inpt" type="password" id="inpSenha" placeholder="Crie sua senha" />
+                        <span id="alertSenha" class="msgAlerta"></span>
+                        <input class="inpt" type="password" id="inpConfirmSenha" placeholder="Confirme sua senha" />
+                        <span id="alertConfirmSenha" class="msgAlerta"></span>
+                    </div>
+                    <div class="botoes">
+                        <button class="botao" type="submit" onclick="cadastrar()">Cadastrar</button>
+                    </div>
+                    <h4>Já possui uma conta? <a href="login.html">Faça Login</a></h4>
                 </div>
-                <div class="botoes">
-                    <button class="botao" type="submit" onclick="cadastrar()">Cadastrar</button>
-                    <button class="botao" type="reset" onclick="cancelar()">Cancelar</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </body>
 
@@ -69,7 +73,7 @@
                     "Preencha o campo com a confirmação da sua senha!<br>";
             }
         }
-        if ((nome.length <= 2) || (email.indexOf("@") == -1 || email.indexOf(".com")== -1) || (senha != confirmSenha) ) {
+        if ((nome.length <= 2) || (email.indexOf("@") == -1 || email.indexOf(".com") == -1) || (senha != confirmSenha)) {
             if (nome.length <= 2) {
                 alertNome.innerHTML += "Insira um nome válido!";
             }
