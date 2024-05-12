@@ -2,92 +2,94 @@
 <html lang="ptbr">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/cadastro.css" />
-    <title>Cadastre-se | WanoQuest</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleCadastro.css">
+    <link rel="" href="">
+    <title>Cadastre-se</title>
 </head>
 
 <body>
-    <div class="conteudo">
-        <div class="container">
-            <h1><a href="index.html">WanoQuest</a></h1>
-            <form id="formulario" class="formulario">
-                <div class="cadastro">
-                    <h2>Crie uma nova conta</h2>
-                    <div class="inputs">
-                        <input class="inpt" type="text" id="inpNome" placeholder="Insira seu nome" />
-                        <span id="alertNome" class="msgAlerta"></span>
-                        <input class="inpt" type="email" id="inpEmail" placeholder="Insira seu email" />
-                        <span id="alertEmail" class="msgAlerta"></span>
-                        <input class="inpt" type="password" id="inpSenha" placeholder="Crie sua senha" />
-                        <span id="alertSenha" class="msgAlerta"></span>
-                        <input class="inpt" type="password" id="inpConfirmSenha" placeholder="Confirme sua senha" />
-                        <span id="alertConfirmSenha" class="msgAlerta"></span>
-                    </div>
-                    <div class="botoes">
-                        <button class="botao" type="submit" onclick="cadastrar()">Cadastrar</button>
-                    </div>
-                    <h4>Já possui uma conta? <a href="login.html">Faça Login</a></h4>
-                </div>
-            </form>
-        </div>
+<div class="pagCadastro">
+    <div class="inputs">
+        <input type="text" id="inpNome" placeholder="Insira seu nome">
+        <span id="alertNome" class="msgAlerta"></span>
+        <input type="email" id="inpEmail" placeholder="Insira seu email">
+        <span id="alertEmail" class="msgAlerta"></span>
+        <input type="password" id="inpSenha" placeholder="Crie sua senha">
+        <span id="alertSenha" class="msgAlerta"></span>
+        <input type="password" id="inpConfirmSenha" placeholder="Confirme sua senha">
+        <span id="alertConfirmSenha" class="msgAlerta"></span>
+
+        <button onclick="cadastrar()">Cadastrar</button>
+        <button onclick="cancelar()">Cancelar</button>
     </div>
+</div>
+
+<div class="pagLogin">
+    <div class="inputs">
+        
+    </div>
+
+</div>
+
+
 </body>
 
 </html>
 <script>
+    let nome = '';
+    let email = '';
+    let senha = '';
+    let confirmSenha = '';
 
     function cadastrar() {
-        let nome = inpNome.value;
-        let email = inpEmail.value;
-        let senha = inpSenha.value;
-        let confirmSenha = inpConfirmSenha.value;
-
-        alertNome.innerHTML = '';
-        alertEmail.innerHTML = '';
-        alertSenha.innerHTML = '';
-        alertConfirmSenha.innerHTML = '';
+        nome = inpNome.value;
+        email = inpEmail.value;
+        senha = inpSenha.value;
+        confirmSenha = inpConfirmSenha.value;
 
 
-        // let formulario = document.getElementById('formulario');
-        event.preventDefault();
+// validação das inputs
 
 
-        // validação das inputs
-
-        let validacaoVazio = nome == "" || email == "" || senha == "" || confirmSenha == "";
-
-        if (validacaoVazio) {
-            if (nome == "") {
-                alertNome.innerHTML += "Preencha o campo com o seu nome! <br>";
+        if (nome == '' || sobrenome == '' || email == '' || senha == '' || confirmSenha == '') {
+            if (nome == '') {
+                alertNome.innerHTML += 'Preencha o campo com o seu nome!';
             }
-            if (email == "") {
-                alertEmail.innerHTML += "Preencha o campo com o seu email!<br>";
+            if (email == '') {
+                alertEmail.innerHTML += 'Preencha o campo com o seu email!';
             }
-            if (senha == "") {
-                alertSenha.innerHTML += "Preencha o campo com a sua senha!";
+            if (senha == '') {
+                alertSenha.innerHTML += 'Preencha o campo com a sua senha!';
             }
-            if (confirmSenha == "") {
-                alertConfirmSenha.innerHTML +=
-                    "Preencha o campo com a confirmação da sua senha!<br>";
+            if (confirmSenha == '') {
+                alertConfirmSenha.innerHTML += 'Preencha o campo com a confirmação da sua senha!';
             }
         }
-        if ((nome.length <= 2) || (email.indexOf("@") == -1 || email.indexOf(".com") == -1) || (senha != confirmSenha)) {
-            if (nome.length <= 2) {
-                alertNome.innerHTML += "Insira um nome válido!";
-            }
-            if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
-                alertEmail.innerHTML += 'Seu email deve conter @ e ".com!"';
-            }
-            if (senha != confirmSenha) {
-                alertConfirmSenha.innerHTML += "As senhas não são iguais!";
-            }
+        if (nome.length <=2) {
+            alertNome.innerHTML += 'Insira um nome válido!';
         }
-
+        if (email.indexOf('@') == -1 || email.indexOf('.com') == -1) {
+            alertEmail.innerHTML += 'Seu email deve conter @ e .com!';
+        }
+        if (senha != confirmSenha) {
+            alertConfirmSenha.innerHTML += 'As senhas não são iguais!';
+        }
         else {
-            alert("Cadastro realizado com sucesso!");
-            window.location.href = 'login.html';
+            alert("Cadastro realizado com sucesso!")
+            pagCadastro.style.display = 'none';
+            pagLogin.style.display = 'block';
         }
+
+        function login(){
+
+        }
+        
+
+
+
+    
+
     }
 </script>
