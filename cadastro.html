@@ -24,6 +24,29 @@
                         <span id="alertSenha" class="msgAlerta"></span>
                         <input class="inpt" type="password" id="inpConfirmSenha" placeholder="Confirme sua senha" />
                         <span id="alertConfirmSenha" class="msgAlerta"></span>
+
+                        <select class="inpt" id="slcPersonagem">
+                            <option class="inpt" value="#" selected disabled>Selecione um personagem</option>
+                            <option value="luffy">Luffy</option>
+                            <option value="zoro">Zoro</option>
+                            <option value="nami">Nami</option>
+                            <option value="usopp">Usopp</option>
+                            <option value="sanji">Sanji</option>
+                            <option value="chopper">Chopper</option>
+                            <option value="robin">Robin</option>
+                            <option value="brook">Brook</option>
+                            <option value="jinbe">Jinbe</option>
+                            <option value="franky">Franky</option>
+                            <option value="kaido">Kaido</option>
+                            <option value="trafalgar_law">Trafalgar Law</option>
+                            <option value="big_mom">Big Mom</option>
+                            <option value="kozuki_oden">Kozuki Oden</option>
+                            <option value="kozuki_hiyori">Kozuki Hiyori</option>
+                            <option value="kozuki_momonosuke">Kozuki Momonosuke</option>
+                            <option value="kozuki_hiyori">Kozuki Hiyori</option>
+                            <option value="kurozumi_orochi">Kurozumi Orochi</option>
+                        </select>
+                        <span id="alertPersonagem" class="msgAlerta"></span>
                     </div>
                     <div class="botoes">
                         <button class="botao" type="submit" onclick="cadastrar()">Cadastrar</button>
@@ -37,26 +60,45 @@
 
 </html>
 <script>
+    function cadastrar(req, res) {
 
-    function cadastrar() {
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrar(nome, email, senha)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+    //  ----------------------------------------------------------- meu codico abaixo --------------------------------------------------------
+    function cadastrar(req, res) {
         let nome = inpNome.value;
         let email = inpEmail.value;
         let senha = inpSenha.value;
         let confirmSenha = inpConfirmSenha.value;
+        let personagem = slcPersonagem.value;
 
         alertNome.innerHTML = '';
         alertEmail.innerHTML = '';
         alertSenha.innerHTML = '';
         alertConfirmSenha.innerHTML = '';
+        alertPersonagem.innerHTML = '';
 
 
         // let formulario = document.getElementById('formulario');
         event.preventDefault();
 
-
         // validação das inputs
-
-        let validacaoVazio = nome == "" || email == "" || senha == "" || confirmSenha == "";
+        let validacaoVazio = nome == "" || email == "" || senha == "" || confirmSenha == "" || personagem == '#';
 
         if (validacaoVazio) {
             if (nome == "") {
@@ -69,8 +111,10 @@
                 alertSenha.innerHTML += "Preencha o campo com a sua senha!";
             }
             if (confirmSenha == "") {
-                alertConfirmSenha.innerHTML +=
-                    "Preencha o campo com a confirmação da sua senha!<br>";
+                alertConfirmSenha.innerHTML += "Preencha o campo com a confirmação da sua senha!<br>";
+            }
+            if (personagem == '#') {
+                alertPersonagem.innerHTML += "Selecione um personagem!"
             }
         }
         if ((nome.length <= 2) || (email.indexOf("@") == -1 || email.indexOf(".com") == -1) || (senha != confirmSenha)) {
@@ -88,6 +132,22 @@
         else {
             alert("Cadastro realizado com sucesso!");
             window.location.href = 'login.html';
+
+            usuarioModel.cadastrar(nome, email, senha)
+                .then(
+                    function (resultado) {
+                        res.json(resultado);
+                    }
+                ).catch(
+                    function (erro) {
+                        console.log(erro);
+                        console.log(
+                            "\nHouve um erro ao realizar o cadastro! Erro: ",
+                            erro.sqlMessage
+                        );
+                        res.status(500).json(erro.sqlMessage);
+                    }
+                );
         }
     }
 </script>
