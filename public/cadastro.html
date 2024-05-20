@@ -18,10 +18,16 @@
                     <div class="inputs">
                         <input class="inpt" type="text" id="inpNome" placeholder="Insira seu nome" />
                         <span id="alertNome" class="msgAlerta"></span>
+
+                        <input class="inpt" type="text" id="inpNickname" placeholder="Insira seu nickname" />
+                        <span id="alertNickname" class="msgAlerta"></span>
+
                         <input class="inpt" type="email" id="inpEmail" placeholder="Insira seu email" />
                         <span id="alertEmail" class="msgAlerta"></span>
+
                         <input class="inpt" type="password" id="inpSenha" placeholder="Crie sua senha" />
                         <span id="alertSenha" class="msgAlerta"></span>
+
                         <input class="inpt" type="password" id="inpConfirmSenha" placeholder="Confirme sua senha" />
                         <span id="alertConfirmSenha" class="msgAlerta"></span>
 
@@ -60,34 +66,17 @@
 
 </html>
 <script>
-    function cadastrar(req, res) {
 
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
-    //  ----------------------------------------------------------- meu codico abaixo --------------------------------------------------------
     function cadastrar(req, res) {
         let nome = inpNome.value;
+        let nickname = inpNickname.value;
         let email = inpEmail.value;
         let senha = inpSenha.value;
         let confirmSenha = inpConfirmSenha.value;
         let personagem = slcPersonagem.value;
 
         alertNome.innerHTML = '';
+        alertNickname.innerHTML = '';
         alertEmail.innerHTML = '';
         alertSenha.innerHTML = '';
         alertConfirmSenha.innerHTML = '';
@@ -99,11 +88,14 @@
         event.preventDefault();
 
         // validação das inputs
-        let validacaoVazio = nome == "" || email == "" || senha == "" || confirmSenha == "" || personagem == '#';
+        let validacaoVazio = nome == "" || nickname == '' || email == "" || senha == "" || confirmSenha == "" || personagem == '#';
 
         if (validacaoVazio) {
             if (nome == "") {
                 alertNome.innerHTML += "Preencha o campo com o seu nome! <br>";
+            }
+            if (nickname == "") {
+                alertNickname.innerHTML += "Preencha o campo com o seu nickname! <br>";
             }
             if (email == "") {
                 alertEmail.innerHTML += "Preencha o campo com o seu email!<br>";
@@ -143,6 +135,7 @@
                     // crie um atributo que recebe o valor recuperado aqui
                     // Agora vá para o arquivo routes/usuario.js
                     nomeServer: nome,
+                    nicknameServer: nickname,
                     emailServer: email,
                     senhaServer: senha,
                     personagemServer: personagem
@@ -154,7 +147,7 @@
             alert("Cadastro realizado com sucesso!");
             window.location.href = 'login.html';
 
-            usuarioModel.cadastrar(nome, email, senha)
+            usuarioModel.cadastrar(nome, nickname, email, senha, personagem)
                 .then(
                     function (resultado) {
                         res.json(resultado);
@@ -172,45 +165,3 @@
         }
     }
 </script>
-
-<!-- // Enviando o valor da nova input
-fetch("/usuarios/cadastrar", {
-method: "POST",
-headers: {
-"Content-Type": "application/json",
-},
-body: JSON.stringify({
-// crie um atributo que recebe o valor recuperado aqui
-// Agora vá para o arquivo routes/usuario.js
-nomeServer: nomeVar,
-emailServer: emailVar,
-senhaServer: senhaVar,
-empresaServer: empresaVar
-}),
-})
-.then(function (resposta) {
-console.log("resposta: ", resposta);
-
-if (resposta.ok) {
-cardErro.style.display = "block";
-
-mensagem_erro.innerHTML =
-"Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-setTimeout(() => {
-window.location = "login.html";
-}, "2000");
-
-limparFormulario();
-finalizarAguardar();
-} else {
-throw "Houve um erro ao tentar realizar o cadastro!";
-}
-})
-.catch(function (resposta) {
-console.log(`#ERRO: ${resposta}`);
-finalizarAguardar();
-});
-
-return false;
-} -->
