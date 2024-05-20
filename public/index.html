@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="images/logo.svg" type="image/x-icon">
-    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="css/index.css" />
     <title>Home | WanoQuest</title>
 </head>
 
@@ -21,19 +21,24 @@
             <h6><a href="login.html">Cadastre-se | Entre</a> </h6>
         </div>
     </header>
-
     <div class="inicio" id="inicio">
-        <div class="esq">
-            <img src="images/personagens/kaido.jpg" alt="">
-        </div>
-        <div class="dir">
-            <h1>WanoQuest</h1>
-            <h3>Pontue, publique e explore como one piece inspira discussões sobre temas essenciais para um mundo mais
-                sustentável</h3>
-            <div class="imagens">
-                <img class="imgOP" src="images/logoOP.png" alt="One Piece logo">
-                <img class="imgLogo" src="images/logo.svg" alt="WanoQuesta logo">
-                <img class="imgONU" src="images/logoONU.svg" alt="ONU logo">
+        <div class="container">
+            <div class="banner">
+                <div class="esq">
+                    <img src="images/personagens/kaido.jpg" alt="">
+                </div>
+                <div class="dir">
+                    <h1>WanoQuest</h1>
+                    <h3>Pontue, publique e explore como one piece inspira discussões sobre temas essenciais para um
+                        mundo
+                        mais
+                        sustentável</h3>
+                    <div class="imagens">
+                        <img class="imgOP" src="images/logoOP.png" alt="One Piece logo">
+                        <img class="imgLogo" src="images/logo.svg" alt="WanoQuesta logo">
+                        <img class="imgONU" src="images/logoONU.svg" alt="ONU logo">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -44,14 +49,15 @@
             <div class="graficoEsq">
                 <h4>Usuários com mais pontos</h4>
                 <div class="graficoUsuarios">
-                    <img src="images/personagens/kaido.jpg" alt="">
+                    <canvas id="graficoUser"></canvas>
                 </div>
 
             </div>
             <div class="graficoDir">
                 <h4>Tópicos mais curtidos</h4>
                 <div class="graficoTopicos">
-                    <img src="images/personagens/kaido.jpg" alt="">
+                    <canvas id="graficoTopico"></canvas>
+
                 </div>
             </div>
         </div>
@@ -105,11 +111,11 @@
                     a porttitor sapien sagittis. Vivamus fringilla odio a tortor blandit, a blandit magna congue. In
                     tempus molestie nunc eget lacinia. Curabitur luctus eleifend eros a suscipit. Integer elementum
                     fermentum iaculis. Praesent nec iaculis nisi, malesuada egestas dolor. </h5>
-                    <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer suscipit metus nec urna efficitur,
-                        a porttitor sapien sagittis. Vivamus fringilla odio a tortor blandit, a blandit magna congue. In
-                        tempus molestie nunc eget lacinia. Curabitur luctus eleifend eros a suscipit. Integer elementum
-                        fermentum iaculis. Praesent nec iaculis nisi, malesuada egestas dolor.
-                    </h5>
+                <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer suscipit metus nec urna efficitur,
+                    a porttitor sapien sagittis. Vivamus fringilla odio a tortor blandit, a blandit magna congue. In
+                    tempus molestie nunc eget lacinia. Curabitur luctus eleifend eros a suscipit. Integer elementum
+                    fermentum iaculis. Praesent nec iaculis nisi, malesuada egestas dolor.
+                </h5>
             </div>
             <div class="dirSB">
                 <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer suscipit metus nec urna efficitur,
@@ -176,4 +182,56 @@
             borderWidth: 1
         }]
     };
+
+    // const gl = document.getElementById('graficoLinha');
+    // new Chart(gl, {
+    //     type: 'line',
+    //     data: {
+    //         labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+    //         datasets: [{
+    //             label: 'Temperatura',
+    //             data: [30, 29, 28, 25, 22, 23],
+    //             borderWidth: 1,
+    //         },
+    //         {
+    //             label: 'Umidade',
+    //             data: [80, 82, 80, 85, 80, 83],
+    //             borderWidth: 1
+    //         }
+    //     ]
+    //     },
+    //     options: {
+    //         scales: {
+    //             y: {
+    //                 beginAtZero: true
+    //             }
+    //         }
+    //     }
+    // });
+
+    // const gb = document.getElementById('graficoBarra');
+    // new Chart(gb, {
+    //     type: 'bar',
+    //     data: {
+    //         labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+    //         datasets: [{
+    //             label: 'Temperatura Média',
+    //             data: [22, 24, 27, 23, 20, 18],
+    //             borderWidth: 1,
+    //         },
+    //         {
+    //             label: 'Umidade Média',
+    //             data: [90, 89, 93, 87, 88, 82],
+    //             borderWidth: 1
+    //         }
+    //     ]
+    //     },
+    //     options: {
+    //         scales: {
+    //             y: {
+    //                 beginAtZero: true
+    //             }
+    //         }
+    //     }
+    // });
 </script>

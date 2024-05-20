@@ -55,14 +55,17 @@ a:hover {
 
 /* CONTEÚDO DA PÁGINA */
 .container {
-    width: 1140px;
+    width: 1240px;
 }
+/* .inicio .container {
+    width: 1200px;;
+} */
 
 .inicio {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 200px 100px 100px;
+    padding: 120px 100px 100px;
     background-color: #5681A6;
 
 }
@@ -72,7 +75,7 @@ a:hover {
 }
 
 .esq img {
-    width: 500px;
+    width: 400px;
 }
 
 .dir {
@@ -80,8 +83,13 @@ a:hover {
     flex-direction: column;
     text-align: end;
     gap: 80px;
-    margin-left: 500px;
     line-height: 60px;
+}
+
+.banner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .dir h3 {
