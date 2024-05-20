@@ -38,14 +38,12 @@ header img{
     display: flex;
     color: #fff;
     font-size: 30px;
-    gap: 80px;
+    gap: 15px;
+    align-items: center;
 }
 .links a{
     text-decoration: none;
     color: #fff;
-}
-.links .btnSair a{
-    color: #BF544B;
 }
 .links .btnSair a:hover {
     text-decoration: underline;
@@ -59,6 +57,9 @@ a:hover{
     justify-content: center;
     gap: 120px;
 }
-.slct{
-    color: #EFEDEE;
+.slct a{
+    color: #F7BECD;
+}
+#nickname {
+    color: #E3BF23;
 }

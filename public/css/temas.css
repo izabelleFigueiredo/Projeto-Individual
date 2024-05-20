@@ -38,14 +38,12 @@ header img{
     display: flex;
     color: #fff;
     font-size: 30px;
-    gap: 80px;
+    gap: 15px;
+    align-items: center;
 }
 .links a{
     text-decoration: none;
     color: #fff;
-}
-.links .btnSair a{
-    color: #BF544B;
 }
 .links .btnSair a:hover {
     text-decoration: underline;
@@ -59,6 +57,54 @@ a:hover{
     justify-content: center;
     gap: 120px;
 }
-.slct{
-    color: #EFEDEE;
+.slct a{
+    color: #F7BECD;
+}
+#nickname {
+    color: #E3BF23;
+}
+
+/* CONTEUDO DA PAGINA   */
+.container {
+    width: 1040px;
+    background-color: #F7BECD;
+}
+.titulo {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 150px 150px 100px;
+    gap: 50px;
+}
+.temas{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 100px 100px 100px;
+    gap: 50px;
+}
+.topicoTema {
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    background-color: #af7d8abd ;
+    border: 2px solid #fff;
+    padding: 1.5%;
+    border-radius: 30px;
+    gap: 10px;
+}
+.tituloTopico {
+    color: #222;
+    font-size: 22px;
+}
+.desc {
+    color: #fff;
+}
+
+/* FOOTER */
+footer {
+    height: 350px;
+    background-color: #222;
 }
