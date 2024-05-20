@@ -27,24 +27,24 @@
 
                         <select class="inpt" id="slcPersonagem">
                             <option class="inpt" value="#" selected disabled>Selecione um personagem</option>
-                            <option value="luffy">Luffy</option>
-                            <option value="zoro">Zoro</option>
-                            <option value="nami">Nami</option>
-                            <option value="usopp">Usopp</option>
-                            <option value="sanji">Sanji</option>
-                            <option value="chopper">Chopper</option>
-                            <option value="robin">Robin</option>
-                            <option value="brook">Brook</option>
-                            <option value="jinbe">Jinbe</option>
-                            <option value="franky">Franky</option>
-                            <option value="kaido">Kaido</option>
-                            <option value="trafalgar_law">Trafalgar Law</option>
-                            <option value="big_mom">Big Mom</option>
-                            <option value="kozuki_oden">Kozuki Oden</option>
-                            <option value="kozuki_hiyori">Kozuki Hiyori</option>
-                            <option value="kozuki_momonosuke">Kozuki Momonosuke</option>
-                            <option value="kozuki_hiyori">Kozuki Hiyori</option>
-                            <option value="kurozumi_orochi">Kurozumi Orochi</option>
+                            <option value="1">Luffy</option>
+                            <option value="2">Zoro</option>
+                            <option value="3">Nami</option>
+                            <option value="4">Usopp</option>
+                            <option value="5">Sanji</option>
+                            <option value="6">Chopper</option>
+                            <option value="7">Robin</option>
+                            <option value="8">Brook</option>
+                            <option value="9">Jinbe</option>
+                            <option value="10">Franky</option>
+                            <option value="11">Kaido</option>
+                            <option value="12">Trafalgar Law</option>
+                            <option value="13">Big Mom</option>
+                            <option value="14">Kozuki Oden</option>
+                            <option value="15">Kozuki Hiyori</option>
+                            <option value="16">Kozuki Momonosuke</option>
+                            <option value="17">Kozuki Hiyori</option>
+                            <option value="18">Kurozumi Orochi</option>
                         </select>
                         <span id="alertPersonagem" class="msgAlerta"></span>
                     </div>
@@ -131,6 +131,26 @@
         }
 
         else {
+            // WEB DATA VIZ - IMPLEMENTAÇÃO
+
+            // Enviando o valor da nova input
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    nomeServer: nome,
+                    emailServer: email,
+                    senhaServer: senha,
+                    personagemServer: personagem
+                }),
+            })
+
+            //  -----------------------------------------------------------------------------------------------------------------
+
             alert("Cadastro realizado com sucesso!");
             window.location.href = 'login.html';
 
@@ -152,3 +172,45 @@
         }
     }
 </script>
+
+<!-- // Enviando o valor da nova input
+fetch("/usuarios/cadastrar", {
+method: "POST",
+headers: {
+"Content-Type": "application/json",
+},
+body: JSON.stringify({
+// crie um atributo que recebe o valor recuperado aqui
+// Agora vá para o arquivo routes/usuario.js
+nomeServer: nomeVar,
+emailServer: emailVar,
+senhaServer: senhaVar,
+empresaServer: empresaVar
+}),
+})
+.then(function (resposta) {
+console.log("resposta: ", resposta);
+
+if (resposta.ok) {
+cardErro.style.display = "block";
+
+mensagem_erro.innerHTML =
+"Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+setTimeout(() => {
+window.location = "login.html";
+}, "2000");
+
+limparFormulario();
+finalizarAguardar();
+} else {
+throw "Houve um erro ao tentar realizar o cadastro!";
+}
+})
+.catch(function (resposta) {
+console.log(`#ERRO: ${resposta}`);
+finalizarAguardar();
+});
+
+return false;
+} -->

@@ -130,3 +130,6 @@ SET senha = MD5('123456')
 WHERE idUsuario = 1;
 
 SELECT * FROM usuario WHERE email = 'fernando@outlook.com'  AND senha = MD5('ferdARRO1920#');
+select * from usuario;
+
+ INSERT INTO usuario (nome, email, senha, fkPersonagem) VALUES

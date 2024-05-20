@@ -6,54 +6,135 @@
 comandos para mysql server
 */
 
-CREATE DATABASE aquatech;
+-- drop database WanoQuest;
+create database WanoQuest;
+use WanoQuest;
 
-USE aquatech;
-
-CREATE TABLE empresa (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	razao_social VARCHAR(50),
-	cnpj CHAR(14)
+create table personagem (
+idPersonagem int primary key auto_increment,
+nome varchar(45) not null,
+descricao varchar(100)
 );
 
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+create table quiz (
+idQuiz int primary key auto_increment,
+nome varchar(45) not null,
+descricao varchar(200),
+qtdQuestoes int not null
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+create table artigo (
+idArtigo int primary key auto_increment,
+titulo varchar(45)
 );
 
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+create table usuario (
+idUsuario int primary key auto_increment,
+nome varchar(100) not null,
+email varchar(45) not null,
+senha varchar(256) not null,
+fkPersonagem int,
+
+constraint chkEmail check (email like '%@%.com'),
+foreign key (fkPersonagem) references personagem(idPersonagem)
 );
 
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
+create table pontuacao (
+fkUsuario int,
+fkQuiz int,
+pontos int not null,
+dataPontuacao datetime,
 
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
+foreign key (fkUsuario) references usuario(idUsuario),
+foreign key (fkQuiz) references quiz(idQuiz),
+primary key (fkUsuario, fkQuiz)
 );
 
-insert into empresa (razao_social, cnpj) values ('Empresa 1', '00000000000000');
-insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
+create table curtir (
+fkUsuario int,
+fkArtigo int,
+dataCurtida date,
+
+foreign key (fkUsuario) references usuario(idUsuario),
+foreign key (fkArtigo) references artigo(idArtigo)
+);
+
+insert into personagem (nome) values
+('Luffy'),
+('Zoro'),
+('Nami'),
+('Usopp'),
+('Sanji'),
+('Chopper'),
+('Robin'),
+('Brook'),
+('Jinbe'),
+('Franky'),
+
+('Kaido'),
+('Trafalgar Law'),
+('Big Mom'),
+
+('Kozuki Oden'),
+('Kozuki Hiyori'),
+('Kozuki Momonosuke'),
+('Kozuki Hiyori'),
+('Kurozumi Orochi');
+
+-- ("Kin'emon"), ('Denjiro'),('Raizo'),('Shinobu'),('Kawamatsu('Izo('Nekomamushi'),('Kanjuro'),
+
+
+
+-- insert into usuario (nome, email, senha, fkPersonagem) values 
+-- ('Fernando Alves', 'fernando@outlook.com', md5('ferdARRO1920#'), 1),
+-- ('Clara Fernandes', 'clara.fernandes@outlook.com', md5('#cald.4509_'), 11);
+
+-- insert into quiz values 
+-- (default, 'Onigashima em Chamas', 'Região de Onigashima, questões englobam o ODS 1 - Erradicação da fome', 10),
+-- (default, 'Kuri Desumana', 'Região de Kuri, questões englobam o ODS 6 - Diminuição das desigualdades', 14);
+
+-- insert into pontuacao values 
+-- (1, 1, 8),
+-- (1, 2, 5),
+-- (2, 2, 12),
+-- (2, 1, 7);
+
+-- insert into artigo (titulo) values
+-- ('As Desigualdades em Kuri'),
+-- ('O que um Imperador faria pelo One Piece?'),
+-- ('Trabalho Escravo e Indústrias Poluentes');
+
+-- insert into curtir values 
+-- (1, 1),
+-- (1, 2),
+-- (1, 3),
+-- (2, 1),
+-- (2, 2),
+-- (2, 3);
+
+
+-- select usuario.nome,
+-- 		quiz.nome,
+-- 		pontuacao.pontos
+-- from pontuacao
+-- join usuario on fkUsuario = idUsuario
+-- join quiz on idQuiz = fkQuiz
+-- where idUsuario = 1;
+
+-- select quiz.nome,
+-- 		quiz.qtdQuestoes
+-- from quiz;
+
+
+-- select  u.nome,
+-- 		a.titulo
+-- from curtir 
+-- join usuario u on fkUsuario = idUsuario
+-- join artigo a on fkArtigo = idArtigo;        
+
+-- SELECT * FROM usuario;
+-- UPDATE usuario
+-- SET senha = MD5('123456')
+-- WHERE idUsuario = 1;
+
+-- SELECT * FROM usuario WHERE email = 'fernando@outlook.com'  AND senha = MD5('ferdARRO1920#');
