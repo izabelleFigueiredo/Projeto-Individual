@@ -125,13 +125,16 @@ from curtir
 join usuario u on fkUsuario = idUsuario
 join artigo a on fkArtigo = idArtigo;        
 
+SELECT * FROM personagem;
 SELECT * FROM usuario;
+
+
 UPDATE usuario
 SET senha = MD5('123456')
 WHERE idUsuario = 1;
 
-SELECT * FROM usuario WHERE email = 'joao@gmail.com'  AND senha = MD5('122');
+SELECT * FROM usuario WHERE email = 'joao@.com'  AND senha = MD5('122');
 select * from usuario;
 
 
- INSERT INTO usuario (nome, email, senha, fkPersonagem) VALUES
+ -- INSERT INTO usuario (nome, email, senha, fkPersonagem) VALUES

@@ -64,10 +64,82 @@ a:hover{
 }
 
 
-/* teste */
-.teste {
-    font-size: 20px;
+/* CONTEÚDO DA PÁGINA  */
+
+.container {
+    background-color: #F7BECD;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    padding: 100px 100px 0;
+    gap: 50px;
+    height: 100vh;
 }
-.teste img {
-    width: 50px;
+.esquerda {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 40%;
+    height: 100%;
+    gap: 5%;
+}
+.foto {
+    display: flex;
+    width: 80%;
+}
+.foto img {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+.dadosUser {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 8%;
+    width: 100%;
+    gap: 20px;
+}
+.nickname {
+    font-size: 34px;
+    color: #5681A6;
+}
+.nome {
+    font-size: 18px;
+}
+.email {
+    font-size: 18px;
+}
+.direita {
+    display: flex;
+    flex-wrap:wrap;
+    width: 40%;
+    height: 100%;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+}
+.dado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    min-width: 150px;
+    max-width: 200px;
+    height: 140px;
+    max-height: 210px;
+    background-color: antiquewhite;
+    border-radius: 40px;
+    text-align: center;
+    font-size: 18px;
+}
+.dadoInfo {
+    background-color: #5681A6;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 26px;
+    padding: 10%;
 }

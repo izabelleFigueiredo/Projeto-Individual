@@ -5,7 +5,6 @@
 /*
 comandos para mysql server
 */
-
 -- drop database WanoQuest;
 create database WanoQuest;
 use WanoQuest;
@@ -31,6 +30,7 @@ titulo varchar(45)
 create table usuario (
 idUsuario int primary key auto_increment,
 nome varchar(100) not null,
+nickname varchar(15) not null unique,
 email varchar(45) not null,
 senha varchar(256) not null,
 fkPersonagem int,
@@ -132,9 +132,16 @@ insert into personagem (nome) values
 -- join usuario u on fkUsuario = idUsuario
 -- join artigo a on fkArtigo = idArtigo;        
 
+-- SELECT * FROM personagem;
 -- SELECT * FROM usuario;
+
+
 -- UPDATE usuario
 -- SET senha = MD5('123456')
 -- WHERE idUsuario = 1;
 
--- SELECT * FROM usuario WHERE email = 'fernando@outlook.com'  AND senha = MD5('ferdARRO1920#');
+-- SELECT * FROM usuario WHERE email = 'joao@.com'  AND senha = MD5('122');
+-- select * from usuario;
+
+
+ -- INSERT INTO usuario (nome, email, senha, fkPersonagem) VALUES

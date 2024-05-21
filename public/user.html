@@ -23,13 +23,59 @@
         </div>
     </header>
 
-    <h6><a href="user.html" class="teste"> <span id="b_nickname"> nickname </span></h6>
-    <span id="b_imgPersonagem" class="teste">   <img src= alt="foto usuário">   </span> </a>
-        
+    <div class="container">
+        <div class="esquerda">
+            <div id="b_imgPersonagem" class="foto"></div>
+
+            <div class="dadosUser">
+                <h6 class="nickname" id="b_nickname"> nickname </h6>
+
+                <h6 class="email" id="b_email"> email </h6>
+
+                <h6 class="nome" id="b_nome"> nome </h6>
+            </div>
+        </div>
+
+        <div class="direita">
+            <div class="dado">
+                <h3>Lorem ipsum dolor</h3>
+                <div class="dadoInfo">
+                    <h2>XX</h2>
+                </div>
+            </div>
+            <div class="dado">
+                <h3>Lorem ipsum dolor</h3>
+                <div class="dadoInfo">
+                    <h2>XX</h2>
+                </div>
+            </div>
+            <div class="dado">
+                <h3>Lorem ipsum dolor</h3>
+                <div class="dadoInfo">
+                    <h2>XX</h2>
+                </div>
+            </div>
+            <div class="dado">
+                <h3>Lorem ipsum dolor</h3>
+                <div class="dadoInfo">
+                    <h2>XX</h2>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </body>
+
 </html>
 <script>
+    // console.log('nickname: ', sessionStorage.NICKNAME_USUARIO);
+    // console.log('personagem: ', sessionStorage.PERSONAGEM_USUARIO);
+    // console.log('email: ', sessionStorage.EMAIL_USUARIO);
+    // console.log('nome: ', sessionStorage.NOME_USUARIO);
+
+    b_nome.innerHTML = sessionStorage.NOME_USUARIO;
     b_nickname.innerHTML = sessionStorage.NICKNAME_USUARIO;
-    b_imgPersonagem.innerHTML = sessionStorage.PERSONAGEM_USUARIO
+    b_email.innerHTML = sessionStorage.EMAIL_USUARIO;
+    b_imgPersonagem.innerHTML = `<img src='images/personagens/${sessionStorage.PERSONAGEM_USUARIO}.jpg' alt="foto perfil">`
 
 </script>
