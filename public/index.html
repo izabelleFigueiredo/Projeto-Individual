@@ -18,14 +18,17 @@
             <h6><a href="index.html#divPlacares">Placares</a></h6>
             <h6><a href="index.html#divProjeto">O Projeto</a></h6>
             <h6><a href="index.html#divSobreMim">Sobre</a></h6>
-            <h6><a href="login.html">Cadastre-se | Entre</a> </h6>
+
+            <div id="usuarioVariaveis">
+                <h6 id="user"><a href="login.html">Cadastre-se | Entre</a> </h6>
+            </div>
         </div>
     </header>
     <div class="inicio" id="inicio">
         <div class="container">
             <div class="banner">
                 <div class="esq">
-                    <img src="images/personagens/kaido.jpg" alt="">
+                    <img src="images/personagens/10.jpg" alt="">
                 </div>
                 <div class="dir">
                     <h1>WanoQuest</h1>
@@ -69,7 +72,7 @@
             <div class="projP1">
 
                 <div class="esq1">
-                    <img src="images/personagens/kaido.jpg" alt="">
+                    <img src="images/personagens/10.jpg" alt="">
                 </div>
 
                 <div class="dir1">
@@ -92,7 +95,7 @@
                         fermentum iaculis. Praesent nec iaculis nisi, malesuada egestas dolor. </h5>
                 </div>
                 <div class="dir2">
-                    <img src="images/personagens/kaido.jpg" alt="">
+                    <img src="images/personagens/10.jpg" alt="">
 
                 </div>
             </div>
@@ -102,8 +105,8 @@
     <div class="divSobreMim" id="divSobreMim">
         <h1>Sobre mim</h1>
         <div class="imgs">
-            <img src="images/personagens/kozuki oden.jpg" alt="eu">
-            <img src="images/personagens/chopper.jpg" alt="chopper">
+            <img src="images/personagens/9.jpg" alt="eu">
+            <img src="images/personagens/13.jpg" alt="chopper">
         </div>
         <div class="textos">
             <div class="esqSB">
@@ -183,55 +186,55 @@
         }]
     };
 
-    // const gl = document.getElementById('graficoLinha');
-    // new Chart(gl, {
-    //     type: 'line',
-    //     data: {
-    //         labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
-    //         datasets: [{
-    //             label: 'Temperatura',
-    //             data: [30, 29, 28, 25, 22, 23],
-    //             borderWidth: 1,
-    //         },
-    //         {
-    //             label: 'Umidade',
-    //             data: [80, 82, 80, 85, 80, 83],
-    //             borderWidth: 1
-    //         }
-    //     ]
-    //     },
-    //     options: {
-    //         scales: {
-    //             y: {
-    //                 beginAtZero: true
-    //             }
-    //         }
-    //     }
-    // });
+    const gl = document.getElementById('graficoUser');
+    new Chart(gl, {
+        type: 'line',
+        data: {
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            datasets: [{
+                label: 'Temperatura',
+                data: [30, 29, 28, 25, 22, 23],
+                borderWidth: 1,
+            },
+            {
+                label: 'Umidade',
+                data: [80, 82, 80, 85, 80, 83],
+                borderWidth: 1
+            }
+        ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
 
-    // const gb = document.getElementById('graficoBarra');
-    // new Chart(gb, {
-    //     type: 'bar',
-    //     data: {
-    //         labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
-    //         datasets: [{
-    //             label: 'Temperatura Média',
-    //             data: [22, 24, 27, 23, 20, 18],
-    //             borderWidth: 1,
-    //         },
-    //         {
-    //             label: 'Umidade Média',
-    //             data: [90, 89, 93, 87, 88, 82],
-    //             borderWidth: 1
-    //         }
-    //     ]
-    //     },
-    //     options: {
-    //         scales: {
-    //             y: {
-    //                 beginAtZero: true
-    //             }
-    //         }
-    //     }
-    // });
+    const gb = document.getElementById('graficoTopico');
+    new Chart(gb, {
+        type: 'bar',
+        data: {
+            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+            datasets: [{
+                label: 'Temperatura Média',
+                data: [22, 24, 27, 23, 20, 18],
+                borderWidth: 1,
+            },
+            {
+                label: 'Umidade Média',
+                data: [90, 89, 93, 87, 88, 82],
+                borderWidth: 1
+            }
+        ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
 </script>

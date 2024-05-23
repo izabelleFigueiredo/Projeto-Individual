@@ -24,7 +24,7 @@ create table usuario (
 idUsuario int primary key auto_increment,
 nome varchar(100) not null,
 nickname varchar(15) not null unique,
-email varchar(45) not null,
+email varchar(45) not null unique,
 senha varchar(256) not null,
 fkPersonagem int,
 
