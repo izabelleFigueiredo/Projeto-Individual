@@ -157,10 +157,6 @@
       });
 
       return false;
-    //   ------------------------------------------------------------------
-
-            // alert("Cadastro realizado com sucesso!");
-            // window.location.href = 'login.html';
 
             usuarioModel.cadastrar(nome, nickname, email, senha, personagem)
                 .then(
@@ -172,14 +168,6 @@
                         console.log(erro);
                         console.log(
                             "\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage)
-
-                            // modificacoes pra tentar exibir erro de email já cadastrado, de acordo com a resposta do banco de dados
-
-                            // if ( erro.sqlMessage == "Duplicate entry 'izabelle@gmail.com' for key 'usuario.email'"){
-                            //     alert('Email já cadastrado! Faça o seu login.')
-                            // }
-
-                            // fim modificacoes
                         ;
                         res.status(500).json(erro.sqlMessage);
                     }

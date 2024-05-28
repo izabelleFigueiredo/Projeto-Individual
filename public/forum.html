@@ -19,8 +19,8 @@
             <h6 class="slct"><a href="forum.html">Fórum</a></h6>
         </div>
         <div class="links">
-            <h6><a href="user.html"> <span id="nickname"> nickname </span></h6>
-            <span id="imgPersonagem"> <img src="images/personagens/1.jpg" alt="foto usuário"> </span> </a>
+            <h6><a href="user.html"> <span id="nickname"> </span></h6>
+                <span id="imgPersonagem"> </span> </a>
         </div>
     </header>
 
@@ -118,6 +118,10 @@
 
 </html>
 <script>
+
+nickname.innerHTML = sessionStorage.NICKNAME_USUARIO;
+imgPersonagem.innerHTML = `<img src='images/personagens/${sessionStorage.PERSONAGEM_USUARIO}.jpg' alt="foto perfil">`
+
     function postar() {
         window.location.href = "publicarForum.html";
     }
