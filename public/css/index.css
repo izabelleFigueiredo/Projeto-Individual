@@ -30,6 +30,8 @@ header {
     top: 0;
     left: 0;
     padding: 20px 10%;
+    z-index: 10; /* pra imagem nao sobrepor o header */
+
 }
 
 .logo img {
@@ -46,6 +48,14 @@ header {
 .links a {
     text-decoration: none;
     color: #fff;
+}
+/* pra fazer o efeito de saltar pra frente */
+.imagens img:hover {
+    transform: scale(1.2);
+}
+.imagens img {
+    transition: 0.4s; /* por o transition fora do hover pra animacao de volta também ser suave!*/
+
 }
 
 a:hover {
@@ -75,7 +85,18 @@ a:hover {
 }
 
 .esq img {
-    width: 400px;
+    width: 450px;
+    animation: moveUpDown 3s ease-in-out infinite;
+    position: relative;
+    z-index: 1; /* pra imagem nao sobrepor o header (quanto maior, mais camada acima ele fica) */
+}
+@keyframes moveUpDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-30px);
+    }
 }
 
 .dir {
