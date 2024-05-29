@@ -5,6 +5,19 @@
     box-sizing: border-box;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
+html::-webkit-scrollbar {       /* geral */
+    width: 8px;
+    border-radius: 5px;
+}
+html::-webkit-scrollbar-thumb {      /* a barrinha móvel em si */
+    background-color: #222;
+    border-radius: 5px;
+}
+
+html::-webkit-scrollbar-track {     /* espaco total da barra, o fundo */
+    background-color: #EFEDEE;
+    border-radius: 5px;
+}
 
 /* HEADER */
 header {
@@ -79,6 +92,50 @@ a:hover{
     flex-direction: column;
     gap: 40px;
     font-size: 22px;
+}
+
+/* PÁGINA DE QUIZ */
+
+
+/* ÁREA COPIADA, A MEXER!!! */
+.questionArea {
+    height: 700px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+.question {
+    color: #FFF;
+    font-size: 25px;
+    margin: 20px 0;
+    font-family: 'New Rocker', sans-serif;
+}
+.option {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    background-color: #5D2884;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    color: #FFF;
+    font-size: 16px;
+    cursor: pointer;
+}
+.option span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    margin-left: 5px;
+    margin-right: 10px;
+    background-color: #200B36;
+    color: #FFF;
+}
+.option:hover {
+    background-color: #5600b3;
+    transition: all ease .3s;
 }
 
 /* FOOTER */

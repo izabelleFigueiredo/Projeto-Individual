@@ -12,6 +12,19 @@
     box-sizing: border-box;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
+html::-webkit-scrollbar {       /* geral */
+    width: 8px;
+    border-radius: 5px;
+}
+html::-webkit-scrollbar-thumb {      /* a barrinha móvel em si */
+    background-color: #222;
+    border-radius: 5px;
+}
+
+html::-webkit-scrollbar-track {     /* espaco total da barra, o fundo */
+    background-color: #EFEDEE;
+    border-radius: 5px;
+}
 
 /* HEADER */
 header {
@@ -112,7 +125,23 @@ a:hover{
 }
 .topicoTema:hover {
     transform: scale(1.05);
+
 }
+
+
+/* PÁGINA DE MENU DE QUIZZES */
+
+.back {
+    display: none;
+}
+.front:hover {
+    display: none;
+}
+.front:hover .back {
+    display: block;
+    background-color: #EFEDEE;
+    color: #E3BF23;
+} 
 
 /* FOOTER */
 footer {

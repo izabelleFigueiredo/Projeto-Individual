@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/quiz.css" />
+    <link rel="stylesheet" href="css/temas.css" />
     <title> Quizzes| WanoQuest</title>
 </head>
 
@@ -19,8 +19,8 @@
             <h6><a href="forum.html">Fórum</a></h6>
         </div>
         <div class="links">
-            <h6><a href="user.html"> <span id="nickname">  </span></h6>
-                <span id="imgPersonagem"> </span> </a>
+            <h6><a href="user.html"> <span id="nickname"> </span></h6>
+            <span id="imgPersonagem"> </span> </a>
         </div>
     </header>
 
@@ -30,33 +30,24 @@
     </div>
 
     <div class="temas">
-
-        <div class="topicoTema">
-            <div class="cima">
-                <div class="tituloTopico"> Onigashima em Chamas </div>
-                <div class="pontos">12 pontos</div>
+        <a href="pagQuizzes/quiz1.html">
+            <div class="topicoTema">
+                <div class="front">
+                    <img src="images/wallpaperOnePiece.png" alt="">
+                    <div class="textos">
+                        <h6>Kuri e a Capital das Flores</h6>
+                    </div>
+                    <div class="back">
+                        <h5 class="tituloTema">Kuri e a Capital das Flores</h5>
+                        <h5> Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum voluptates fugiat repellendus
+                            incidunt deserunt sapiente, eius reiciendis. Aspernatur, eos repudiandae hic qui officiis
+                            sit
+                            perferendis.</h5>
+                    </div>
+                </div>
             </div>
-            <hr>
-            <div class="desc">Paz, Justiça e Instituições Eficazes</div>
-        </div>
+        </a>
 
-         <div class="topicoTema">
-            <div class="cima">
-                <div class="tituloTopico"> Kuri Desumanizada</div>
-                <div class="pontos">8 pontos</div>
-            </div>
-            <hr>
-            <div class="desc">Fome zero e agricultura sustentável</div>
-        </div>
-
-        <div class="topicoTema">
-            <div class="cima">
-                <div class="tituloTopico"> Festival na Capital das Flores </div>
-                <div class="pontos">10 pontos</div>
-            </div>
-            <hr>
-            <div class="desc">Redução das desigualdades</div>
-        </div>
     </div>
 
     <footer>
@@ -68,5 +59,5 @@
 </html>
 <script>
     nickname.innerHTML = sessionStorage.NICKNAME_USUARIO;
-imgPersonagem.innerHTML = `<img src='images/personagens/${sessionStorage.PERSONAGEM_USUARIO}.jpg' alt="foto perfil">`
+    imgPersonagem.innerHTML = `<img src='images/personagens/${sessionStorage.PERSONAGEM_USUARIO}.jpg' alt="foto perfil">`
 </script>

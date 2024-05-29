@@ -18,6 +18,19 @@
 html {
     scroll-behavior: smooth;
 }
+html::-webkit-scrollbar {       /* geral */
+    width: 8px;
+    border-radius: 5px;
+}
+html::-webkit-scrollbar-thumb {      /* a barrinha móvel em si */
+    background-color: #222;
+    border-radius: 5px;
+}
+
+html::-webkit-scrollbar-track {     /* espaco total da barra, o fundo */
+    background-color: #EFEDEE;
+    border-radius: 5px;
+}
 
 /* HEADER */
 header {

@@ -1,16 +1,30 @@
 /* 
-#5681A6; azul escuro
-#96C6D9;  azul claro
-#D9AA8F; 
- bege
-#59372A; marrom
-#BF544B;  vermelho */
-
+##1EC6D9 azul
+#E3BF23 amarelo
+#EFEDEE branco
+#F7BECD rosa
+#E7857A bege
+#A65712 laranja escuro
+#8C2727 vermelho
+ */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+html::-webkit-scrollbar {       /* geral */
+    width: 8px;
+    border-radius: 5px;
+}
+html::-webkit-scrollbar-thumb {      /* a barrinha móvel em si */
+    background-color: #222;
+    border-radius: 5px;
+}
+
+html::-webkit-scrollbar-track {     /* espaco total da barra, o fundo */
+    background-color: #EFEDEE;
+    border-radius: 5px;
 }
 
 /* HEADER */

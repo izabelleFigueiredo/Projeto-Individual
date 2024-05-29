@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/pagTemas.css" />
+    <title> Quiz | WanoQuest</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="../index.html"><img src="../images/logo.svg" alt="logo"> </a>
+        </div>
+        <div class="opcoes links">
+            <h6><a href="../temas.html">Temas</a></h6>
+            <h6 class="slct"><a href="../quiz.html">Quizzes</a></h6>
+            <h6><a href="../forum.html">Fórum</a></h6>
+        </div>
+        <div class="links">
+            <h6><a href="../user.html"> <span id="nickname"> </span></h6>
+            <span id="imgPersonagem"> </span> </a>
+        </div>
+    </header>
+
+    <!-- área somente copiada, tem que mexer aqui ainda  --------------------------------------------------------------------->
+
+    <div class="container">
+        <div class="alinhando">
+            <!-- <div class="progress">
+                <div class="progress--bar"></div>
+            </div> -->
+            
+            <div class="questionArea">
+                <h1>AJUDE-ME A TE CONHECER MELHOR!</h1>
+                <div class="question">...</div>
+                <div class="options"></div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="quiz.js"></script>
+    <!-- FIM COPIA ------------------------------------------------------------------------------------------------------------ -->
+</body>
+</html>
+<script>
+    nickname.innerHTML = sessionStorage.NICKNAME_USUARIO;
+    imgPersonagem.innerHTML = `<img src='images/personagens/${sessionStorage.PERSONAGEM_USUARIO}.jpg' alt="foto perfil">`
+</script>
