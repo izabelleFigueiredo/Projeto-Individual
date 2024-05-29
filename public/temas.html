@@ -19,8 +19,8 @@
             <h6><a href="forum.html">Fórum</a></h6>
         </div>
         <div class="links">
-            <h6><a href="user.html"> <span id="nickname">  </span></h6>
-                <span id="imgPersonagem"> </span> </a>
+            <h6><a href="user.html"> <span id="nickname"> </span></h6>
+            <span id="imgPersonagem"> </span> </a>
         </div>
     </header>
 
@@ -29,10 +29,12 @@
     </div>
 
     <div class="temas">
-        <div class="topicoTema">
-             <img src="images/backgroundMar.jpg" alt=""> 
-             <h6>Kuri e a Capital das Flores</h6>
-        </div>
+        <a href="pagTemas/tema1.html">
+            <div class="topicoTema">
+                <img src="images/wallpaperOnePiece.png" alt="">
+                <h6>Kuri e a Capital das Flores</h6>
+            </div>
+        </a>
     </div>
 
     <footer>
@@ -43,5 +45,5 @@
 </html>
 <script>
     nickname.innerHTML = sessionStorage.NICKNAME_USUARIO;
-imgPersonagem.innerHTML = `<img src='images/personagens/${sessionStorage.PERSONAGEM_USUARIO}.jpg' alt="foto perfil">`
+    imgPersonagem.innerHTML = `<img src='images/personagens/${sessionStorage.PERSONAGEM_USUARIO}.jpg' alt="foto perfil">`
 </script>
