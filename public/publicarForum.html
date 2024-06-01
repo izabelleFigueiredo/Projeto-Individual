@@ -28,6 +28,10 @@
         <div class="divInput">
             <input onkeydown="verificarTamanho()" maxlength="200" type="text" id="inpMsg" class="inp" placeholder="Insira uma mensagem...">
             <h6 id="msgTeclasRestantes"> </h6>
+            <select class="slc" id="slctTema">
+                <option selected disabled value="#">Selecione um tema</option>
+                <option value="1">Kuri e a Capital das Flores</option>
+            </select>
             <button class="botao" onclick="publicar()">Publicar</button>
         </div>
         <div class="recados">
@@ -57,7 +61,7 @@ imgPersonagem.innerHTML = `<img src='images/personagens/${sessionStorage.PERSONA
 
 function verificarTamanho() {
     let contagem = (inpMsg.value).length;
-    let limite = 200
+    let limite = 200;
     msgTeclasRestantes.innerHTML = `Você ainda pode digitar ${limite - contagem} letras!`;
 
     if (contagem <= limite ) {
@@ -65,6 +69,13 @@ function verificarTamanho() {
     else {
         msgTeclasRestantes.innerHTML = `Limite de caracteres atingido!`;
 
+    }
+}
+function publicar() {
+    if (slctTema.value == '#') {
+        alert('Selecione um tema!');
+    }if (inpMsg.value == '') {
+        alert('Escreva uma mensagem antes de publicar algo!');
     }
 }
 

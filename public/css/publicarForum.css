@@ -94,6 +94,12 @@ a:hover {
     height: 50%;
     text-align: start;
 }
+.slc { /* class de cada input */
+    text-align: center;
+    padding: 4px;
+    background-color: #ffffff00;
+    border-radius: 10px;
+}
 button {
     border-style: none;
 }

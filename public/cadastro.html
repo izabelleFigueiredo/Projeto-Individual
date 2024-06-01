@@ -109,69 +109,106 @@
             if (personagem == '#') {
                 alertPersonagem.innerHTML += "Selecione um personagem!"
             }
-        }
-        if ((nome.length <= 2) || (email.indexOf("@") == -1 || email.indexOf(".com") == -1) || (senha != confirmSenha)) {
-            if (nome.length <= 2) {
-                alertNome.innerHTML += "Insira um nome válido!";
-            }
-            if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
-                alertEmail.innerHTML += 'Seu email deve conter @ e ".com!"';
-            }
-            if (senha != confirmSenha) {
-                alertConfirmSenha.innerHTML += "As senhas não são iguais!";
-            }
-        }
-
-        else {
-            // WEB DATA VIZ - IMPLEMENTAÇÃO
-
-            // Enviando o valor da nova input
-            fetch("/usuarios/cadastrar", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    // crie um atributo que recebe o valor recuperado aqui
-                    // Agora vá para o arquivo routes/usuario.js
-                    nomeServer: nome,
-                    nicknameServer: nickname,
-                    emailServer: email,
-                    senhaServer: senha,
-                    personagemServer: personagem
-                }),
-            })
-
-            .then(function (resposta) {
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
-            alert("Cadastro realizado com sucesso!");
-            window.location.href = 'login.html';
         } else {
-            alert('Email já cadastrado! Faça o seu login.')
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
 
-      return false;
+            var caracMai = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            var validMai = 0;
+            var caracMin = 'abcdefghijklmnopqrstuvwxyz';
+            var validMin = 0;
+            var caracNum = '0123456789';
+            var validNum = 0;
+            var caracEsp = '!@#$%^&*()_+-=[]{}|;:",.<>/?';
+            var validEsp = 0;
+            var validacaoSenha = false;
 
-            usuarioModel.cadastrar(nome, nickname, email, senha, personagem)
-                .then(
-                    function (resultado) {
-                        res.json(resultado);
-                    }
-                ).catch(
-                    function (erro) {
-                        console.log(erro);
-                        console.log(
-                            "\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage)
-                        ;
-                        res.status(500).json(erro.sqlMessage);
-                    }
-                );
+            // verificando cada caracter da senha
+            for (let i = 0; i < senha.length; i++) {
+                var atual = senha[i];
+
+                if (caracMai.indexOf(atual) != -1) {
+                    validMai++;
+                }
+                if (caracMin.indexOf(atual) != -1) {
+                    validMin++;
+                }
+                if (caracNum.indexOf(atual) != -1) {
+                    validNum++;
+                }
+                if (caracEsp.indexOf(atual) != -1) {
+                    validEsp++;
+                }
+                if (validMai > 0 && validMin > 0 && validNum > 0 && validEsp > 0) {
+                    validacaoSenha = true;
+                    break;
+                }
+            }
+
+            if (validacaoSenha == false) {
+                alertSenha.innerHTML += "Sua senha deve conter: letra maiúscula, minúscula, número e caracter especial!";
+            }
+            else if ((nome.length <= 2) || (email.indexOf("@") == -1 || email.indexOf(".com") == -1) || (senha != confirmSenha)) {
+                if (nome.length <= 2) {
+                    alertNome.innerHTML += "Insira um nome válido!";
+                }
+                if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
+                    alertEmail.innerHTML += 'Seu email deve conter @ e ".com!"';
+                }
+                if (senha != confirmSenha) {
+                    alertConfirmSenha.innerHTML += "As senhas não são iguais!";
+                }
+            }
+
+            else {
+                // WEB DATA VIZ - IMPLEMENTAÇÃO
+
+                // Enviando o valor da nova input
+                fetch("/usuarios/cadastrar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        // crie um atributo que recebe o valor recuperado aqui
+                        // Agora vá para o arquivo routes/usuario.js
+                        nomeServer: nome,
+                        nicknameServer: nickname,
+                        emailServer: email,
+                        senhaServer: senha,
+                        personagemServer: personagem
+                    }),
+                })
+
+                    .then(function (resposta) {
+                        console.log("resposta: ", resposta);
+
+                        if (resposta.ok) {
+                            alert("Cadastro realizado com sucesso!");
+                            window.location.href = 'login.html';
+                        } else {
+                            alert('Email já cadastrado! Faça o seu login.')
+                        }
+                    })
+                    .catch(function (resposta) {
+                        console.log(`#ERRO: ${resposta}`);
+                    });
+
+                return false;
+
+                usuarioModel.cadastrar(nome, nickname, email, senha, personagem)
+                    .then(
+                        function (resultado) {
+                            res.json(resultado);
+                        }
+                    ).catch(
+                        function (erro) {
+                            console.log(erro);
+                            console.log(
+                                "\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage)
+                                ;
+                            res.status(500).json(erro.sqlMessage);
+                        }
+                    );
+            }
         }
     }
 </script>
