@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="images/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="css/index.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Home | WanoQuest</title>
 </head>
 
@@ -49,18 +50,13 @@
     <div class="divPlacares" id="divPlacares">
         <h1>Placares Globais</h1>
         <div class="graficos">
-            <div class="graficoEsq">
+            <div class="graficoE">
                 <h4>Usuários com mais pontos</h4>
-                <div class="graficoUsuarios">
-                    <canvas id="graficoUser"></canvas>
-                </div>
-
+                <canvas id="graficoUser"></canvas>
             </div>
-            <div class="graficoDir">
-                <h4>Tópicos mais curtidos</h4>
-                <div class="graficoTopicos">
-                    <canvas id="graficoTopico"></canvas>
-
+            <div class="graficoE">
+                <h4>Usuários com mais curtidas</h4>
+                    <canvas id="graficoCurtidas"></canvas>
                 </div>
             </div>
         </div>
@@ -139,57 +135,35 @@
 
 </body>
 <script>
-    const config = {
-        type: 'bar',
-        data,
-        options: {
-            indexAxis: 'y',
-        }
-    };
-    const labels = Utils.months({ count: 7 });
-    const data = {
-        labels: labels,
-        datasets: [{
-            axis: 'y',
-            label: 'My First Dataset',
-            data: [65, 59, 80, 81, 56, 55, 40],
-            fill: false,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(255, 205, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(201, 203, 207, 0.2)'
-            ],
-            borderColor: [
-                'rgb(255, 99, 132)',
-                'rgb(255, 159, 64)',
-                'rgb(255, 205, 86)',
-                'rgb(75, 192, 192)',
-                'rgb(54, 162, 235)',
-                'rgb(153, 102, 255)',
-                'rgb(201, 203, 207)'
-            ],
-            borderWidth: 1
-        }]
-    };
+// GRÁFICO DE USUÁRIOS COM MAIS PONTOS -------------------------------------------
 
-    const gl = document.getElementById('graficoUser');
-    new Chart(gl, {
-        type: 'line',
+// nome dos usuários
+let user1 = 'jon';
+let user2 = 'jan';
+let user3 = 'jao';
+// pontuacao dos usuários
+let user1Pts = 17;
+let user2Pts = 14;
+let user3Pts = 12;
+    const gu = document.getElementById('graficoUser');
+    new Chart(gu, {
+        type: 'bar',
         data: {
-            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            labels: [`Usuários`],
             datasets: [{
-                label: 'Temperatura',
-                data: [30, 29, 28, 25, 22, 23],
+                label: `${user1}`,
+                data: [`${user1Pts}`],
                 borderWidth: 1,
             },
             {
-                label: 'Umidade',
-                data: [80, 82, 80, 85, 80, 83],
-                borderWidth: 1
+                label: `${user2}`,
+                data: [`${user2Pts}`],
+                borderWidth: 1,
+            },
+            {
+                label:`${user3}`,
+                data: [`${user3Pts}`],
+                borderWidth: 1,
             }
         ]
         },
@@ -202,20 +176,36 @@
         }
     });
 
-    const gb = document.getElementById('graficoTopico');
-    new Chart(gb, {
+
+// GRÁFICO DE USUÁRIOS COM MAIS CURTIDAS ------------------------------------------------------------------------
+
+// nome dos usuários
+let userCurt1 = 'mon';
+let userCurt2 = 'clan';
+let userCurt3 = 'muss';
+// pontuacao dos usuários
+let user1Curt = 35;
+let user2Curt = 28;
+let user3Curt = 19;
+    const gc = document.getElementById('graficoCurtidas');
+    new Chart(gc, {
         type: 'bar',
         data: {
-            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+            labels: [`Usuários`],
             datasets: [{
-                label: 'Temperatura Média',
-                data: [22, 24, 27, 23, 20, 18],
+                label: `${userCurt1}`,
+                data: [`${user1Curt}`],
                 borderWidth: 1,
             },
             {
-                label: 'Umidade Média',
-                data: [90, 89, 93, 87, 88, 82],
-                borderWidth: 1
+                label: `${userCurt2}`,
+                data: [`${user2Curt}`],
+                borderWidth: 1,
+            },
+            {
+                label:`${userCurt3}`,
+                data: [`${user3Curt}`],
+                borderWidth: 1,
             }
         ]
         },

@@ -180,7 +180,13 @@ a:hover {
     align-items: center;
     justify-content: space-evenly;
     gap: 200px;
-    padding: 100px;
+    padding-top: 100px;
+}
+.graficoE {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    /* height: 100%; */
 }
 
 .graficos img {
