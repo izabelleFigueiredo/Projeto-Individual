@@ -71,9 +71,8 @@ a:hover{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     padding: 100px 100px 0;
-    /* gap: 50px; */
     height: 100vh;
 }
 .esquerda {
@@ -104,43 +103,41 @@ a:hover{
     gap: 20px;
 }
 .nickname {
-    font-size: 34px;
+    font-size: 42px;
     color: #5681A6;
 }
-.nome {
-    font-size: 18px;
-}
-.email {
-    font-size: 18px;
+.nome, .email {
+    font-size: 20px;
 }
 .direita {
     display: flex;
     flex-wrap:wrap;
-    width: 40%;
+    width: 50%;
     height: 100%;
     align-items: center;
-    justify-content: space-between;
-    gap: 10%;
+    align-content: center;
+    justify-content: center;
+    gap: 17%;
 }
 .dado {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-start;
     text-align: center;
-    min-width: 250px;
-    max-width: 250px;
-    height: 150px;
-    max-height: 210px;
-    background-color: antiquewhite;
-    border-radius: 40px;
-    text-align: center;
+    height: 130px;
+    /* background-color: antiquewhite; */
+    border-radius: 30px;
     font-size: 18px;
+    width: 220px;
+}
+.dado h3{
+    padding: 15px;
 }
 .dadoInfo {
     background-color: #5681A6;
     border-radius: 15px;
-    text-align: center;
     font-size: 26px;
-    padding: 10%;
+    /* padding: 2% 10%; */
+    width: 100%;
 }
