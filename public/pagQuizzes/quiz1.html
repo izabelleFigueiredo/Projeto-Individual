@@ -25,26 +25,34 @@
     </header>
 
     <!-- área somente copiada, tem que mexer aqui ainda  --------------------------------------------------------------------->
-
-    <div class="container">
-        <div class="alinhando">
-            <!-- <div class="progress">
-                <div class="progress--bar"></div>
-            </div> -->
-            
-            <div class="questionArea">
-                <h1>AJUDE-ME A TE CONHECER MELHOR!</h1>
-                <div class="question">...</div>
-                <div class="options"></div>
+    <div class="container quiz">
+        <section class="quiz">
+            <div class="top">
+                <i class="uil uil-bars sidebar-toggle"></i>
             </div>
-            
-        </div>
-    </div>
 
-    <script src="questions.js"></script>
-    <script src="quiz.js"></script>
+            <div class="alinhando">
+                <div class="progress">
+                    <div class="progress--bar"></div>
+                </div>
+
+                <div class="questionArea">
+                    <h1>Tema: Kuri e a Capital das Flores</h1>
+                    <div class="question">...</div>
+                    <div class="options"></div>
+                </div>
+                <div class="scoreArea">
+                    <div class="Text"></div>
+                    <button>SAIR</button>
+                </div>
+            </div>
+        </section>
+        <script src="questions.js"></script>
+        <script src="quiz.js"></script>
+    </div>
     <!-- FIM COPIA ------------------------------------------------------------------------------------------------------------ -->
 </body>
+
 </html>
 <script>
     nickname.innerHTML = sessionStorage.NICKNAME_USUARIO;
