@@ -34,6 +34,7 @@
             <div class="infoUser">
                 <span id="imgPersonagem" class="foto"> <img src="images/personagens/3.jpg" </span>
                     <span id="nickname" class="nickname"> nickname </span>
+                    <span id="curtida" onclick="funcCurtir()"> <img src="images/curtir.png"></span>
             </div>
             <div class="tituloTopico">Tópico: <span id="topico"> Kuri em Queda </span> </div> <hr>
             <div class="mensagem"><span id="mensagem">Curabitur sit amet libero suscipit, convallis ipsum eget,
@@ -44,6 +45,7 @@
             <div class="infoUser">
                 <span id="imgPersonagem" class="foto"> <img src="images/personagens/3.jpg" </span>
                     <span id="nickname" class="nickname"> nickname </span>
+                    <span id="curtida" onclick="funcCurtir()"> <img src="images/curtir.png"></span>
             </div>
             <div class="tituloTopico">Tópico: <span id="topico"> Kuri em Queda </span> </div><hr>
             <div class="mensagem"><span id="mensagem">Curabitur sit amet libero suscipit, convallis ipsum eget,
@@ -54,56 +56,7 @@
             <div class="infoUser">
                 <span id="imgPersonagem" class="foto"> <img src="images/personagens/3.jpg" </span>
                     <span id="nickname" class="nickname"> nickname </span>
-            </div>
-            <div class="tituloTopico">Tópico: <span id="topico"> Kuri em Queda </span> </div><hr>
-            <div class="mensagem"><span id="mensagem">Curabitur sit amet libero suscipit, convallis ipsum eget,
-                    tristique urna. Nulla sit amet nulla ac quam dignissim suscipit sit amet a risus. Curabitur vel
-                    augue malesuada, pellentesque diam et, euismod massa. </span></div>
-        </div>
-        <div class="comm">
-            <div class="infoUser">
-                <span id="imgPersonagem" class="foto"> <img src="images/personagens/3.jpg" </span>
-                    <span id="nickname" class="nickname"> nickname </span>
-            </div>
-            <div class="tituloTopico">Tópico: <span id="topico"> Kuri em Queda </span> </div><hr>
-            <div class="mensagem"><span id="mensagem">Curabitur sit amet libero suscipit, convallis ipsum eget,
-                    tristique urna. Nulla sit amet nulla ac quam dignissim suscipit sit amet a risus. Curabitur vel
-                    augue malesuada, pellentesque diam et, euismod massa. </span></div>
-        </div>
-        <div class="comm">
-            <div class="infoUser">
-                <span id="imgPersonagem" class="foto"> <img src="images/personagens/3.jpg" </span>
-                    <span id="nickname" class="nickname"> nickname </span>
-            </div>
-            <div class="tituloTopico">Tópico: <span id="topico"> Kuri em Queda </span> </div><hr>
-            <div class="mensagem"><span id="mensagem">Curabitur sit amet libero suscipit, convallis ipsum eget,
-                    tristique urna. Nulla sit amet nulla ac quam dignissim suscipit sit amet a risus. Curabitur vel
-                    augue malesuada, pellentesque diam et, euismod massa. </span></div>
-        </div>
-        <div class="comm">
-            <div class="infoUser">
-                <span id="imgPersonagem" class="foto"> <img src="images/personagens/3.jpg" </span>
-                    <span id="nickname" class="nickname"> nickname </span>
-            </div>
-            <div class="tituloTopico">Tópico: <span id="topico"> Kuri em Queda </span> </div><hr>
-            <div class="mensagem"><span id="mensagem">Curabitur sit amet libero suscipit, convallis ipsum eget,
-                    tristique urna. Nulla sit amet nulla ac quam dignissim suscipit sit amet a risus. Curabitur vel
-                    augue malesuada, pellentesque diam et, euismod massa. </span></div>
-        </div>
-        <div class="comm">
-            <div class="infoUser">
-                <span id="imgPersonagem" class="foto"> <img src="images/personagens/3.jpg" </span>
-                    <span id="nickname" class="nickname"> nickname </span>
-            </div>
-            <div class="tituloTopico">Tópico: <span id="topico"> Kuri em Queda </span> </div><hr>
-            <div class="mensagem"><span id="mensagem">Curabitur sit amet libero suscipit, convallis ipsum eget,
-                    tristique urna. Nulla sit amet nulla ac quam dignissim suscipit sit amet a risus. Curabitur vel
-                    augue malesuada, pellentesque diam et, euismod massa. </span></div>
-        </div>
-        <div class="comm">
-            <div class="infoUser">
-                <span id="imgPersonagem" class="foto"> <img src="images/personagens/3.jpg" </span>
-                    <span id="nickname" class="nickname"> nickname </span>
+                    <span id="curtida" onclick="funcCurtir()"> <img src="images/curtir.png"></span>
             </div>
             <div class="tituloTopico">Tópico: <span id="topico"> Kuri em Queda </span> </div><hr>
             <div class="mensagem"><span id="mensagem">Curabitur sit amet libero suscipit, convallis ipsum eget,
@@ -131,5 +84,14 @@ imgPersonagem.innerHTML = `<img src='images/personagens/${sessionStorage.PERSONA
 
     function postar() {
         window.location.href = "publicarForum.html";
+    }
+
+    function funcCurtir() {
+        if (curtida.innerHTML == `<img src="images/curtir.png">`) {
+            curtida.innerHTML = `<img src="images/curtirDo.png">`
+        }
+        else {
+        curtida.innerHTML = `<img src="images/curtir.png">`;
+        }
     }
 </script>
