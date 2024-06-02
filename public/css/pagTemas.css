@@ -166,13 +166,16 @@ a:hover {
 
 
 /* PÁGINA DE QUIZ */
-
-/* ÁREA COPIADA, A MEXER!!! */
 .questionArea {
-    height: 700px;
     max-width: 500px;
     width: 100%;
     text-align: center;
+}
+.questionArea h2 {
+    font-size: 18px;
+    color: #fff;
+    padding: 15px;
+    text-decoration: underline;
 }
 .questionArea h1 {
     color: #8C2727;
@@ -185,49 +188,75 @@ a:hover {
     border-radius: 10px;
     color: #222;
     cursor: pointer;
+    padding: 20px;
+    text-align: justify;
+    transition: 0.4s;
 }
-.option span {
+/* pra fazer o efeito de saltar pra frente */
+.option:hover {
+    transform: scale(1.1);
+    background-color: #E7857A;
+    color: #fff;
+}
+
+.fundo {
+    height: 100vh;
+    width: 100%;
+    padding: 100px 0 0 0;
+    background-color: #F7BECD;
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 15px;
-    margin-left: 5px;
-    margin-right: 10px;
-    background-color: #200B36;
-    color: #FFF;
 }
-
-.option:hover {
-    background-color: #F7BECD;
-    transition: all ease .3s;
-}
-
-/* CONTEÚDO DA PÁGINA */
-
 .quiz {
     /* transition: .3s ease; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    padding: 70px;
+    padding: 70px 0 0;
+    gap: 30px;
 }
 .question {
     font-size: 25px;
     padding: 20px;
     color: #fff;
+    text-shadow: 0 0 5px #E7857A;
 }
 .options {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
+.scoreArea {
+    display: flex;
+}
 .Text {
-    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     color: #fff;
-    margin-bottom: 10px;
+    gap: 20px;
+    padding: 0 0 30px;
+}
+.Text h1 {
+    font-size: 36px;
+    text-shadow: 3px 3px 10px #E3BF23;
+}
+.Text h3 {
+    font-size: 22px;
+}
+.btn {
+    padding: 4px 15px;
+    border-radius: 10px;
+    border: none;
+    background-color: #8C2727;
+    color: #fff;
+    width: 100%;
+    transition: 0.4s;
+}
+.btn:hover {
+    background-color: #fff;
+    color: #8C2727;
 }
 /* FOOTER */
 footer{

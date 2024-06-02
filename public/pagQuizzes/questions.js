@@ -24,7 +24,7 @@ let questions = [
             'Água do rio poluída pelas das fábricas',
             'Nenhuma das alternativas'
         ],
-        answer: 2
+        answer: 5
     },
     {
         question: 'O que acontece com os moradores que comem as Smiles defeituosas?',
@@ -39,7 +39,7 @@ let questions = [
             'Perdem a capacidade de expressar felicidade e só conseguem chorar',
             'Nenhuma das alternativas'
         ],
-        answer: 1
+        answer: 6
     },
     {
         question: 'Qual personagem é presenteado(a) com um prato de arroz em seu aniversário?',
@@ -52,7 +52,7 @@ let questions = [
             'Tama',
             'Nenhuma das alternativas'
         ],
-        answer: 1
+        answer: 5
     },
     {
         question: 'Quais ODS da ONU são notados em relação à situação de Kuri? e a Capital das Flores?',
@@ -64,7 +64,7 @@ let questions = [
             'Redução das Desigualdades, Erradicação da Pobreza, Fome Zero e Agricultura sustentável',
             'Nenhuma das alternativas'
         ],
-        answer: 3
+        answer: 0
     },
     {
         question: 'O que a reflexão sugere sobre One Piece e sua relevância para o mundo real?',
@@ -77,8 +77,8 @@ let questions = [
             'Reflete muitos problemas enfrentados por personagens de outras obras',
             'Nenhuma das alternativas'
         ],
-        answer: 1
-    },
+        answer: 2
+        },
     {
         question: 'Qual dos seguintes problemas enfrentados pelos moradores de Kuri também é uma realidade para muitos brasileiros?',
         options: [
@@ -88,7 +88,7 @@ let questions = [
             'Desigualdades sociais e regionais',
             'Nenhuma das alternativas'
         ],
-        answer: 1
+        answer: 0
     },
     {
         question: 'Quem foi o pirata que destruiu as vilas de Kuri?',
@@ -102,6 +102,6 @@ let questions = [
             'X Drake',
             'Nenhuma das alternativas'
         ],
-        answer: 1
+        answer: 6
     },
 ];
