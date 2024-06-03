@@ -26,16 +26,24 @@
 
     <div class="container">
         <div class="divInput">
-        <form id="form_postagem" method="post" onsubmit="return publicar()">
-            <input onkeydown="verificarTamanho()" maxlength="200" type="text" id="inpMsg" class="inp"
-                placeholder="Insira uma mensagem...">
-            <h6 id="msgTeclasRestantes"> </h6>
-            <select class="slc" id="slctTema">
-                <option selected disabled value="#">Selecione um tema</option>
-                <option value="1">Kuri e a Capital das Flores</option>
-            </select>
-            <button type="submit" class="botao">Publicar</button>
-        </form>
+            <form id="form_postagem" method="post" onsubmit="return publicar()">
+                <div class="divPost">
+                    <input onkeyup="verificarTamanho()" maxlength="200" type="text" id="inpMsg" class="inp"
+                        placeholder="Insira uma mensagem...">
+                </div>
+                <div class="divPost">
+                    <h6 id="msgTeclasRestantes"> </h6>
+                </div>
+                <div class="divPost">
+                    <select class="slc" id="slctTema">
+                        <option selected disabled value="#">Selecione um tema</option>
+                        <option value="1">Kuri e a Capital das Flores</option>
+                    </select>
+                </div>
+                <div class="divPost">
+                    <button type="submit" class="botao">Publicar</button>
+                </div>
+            </form>
         </div>
         <div class="recados">
             <h2>Lembre-se!</h2>
@@ -53,7 +61,6 @@
                     <img src="images/personagens/4.jpg" alt="">
                 </div>
             </div>
-        </div>
     </div>
 
 </body>
@@ -66,15 +73,14 @@
     console.log(sessionStorage.ID_USUARIO)
 
     function verificarTamanho() {
+        console.log('iniciei')
         let contagem = (inpMsg.value).length;
         let limite = 200;
         msgTeclasRestantes.innerHTML = `Você ainda pode digitar ${limite - contagem} letras!`;
-
         if (contagem <= limite) {
         }
         else {
             msgTeclasRestantes.innerHTML = `Limite de caracteres atingido!`;
-
         }
     }
     function publicar() {

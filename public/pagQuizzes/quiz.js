@@ -5,7 +5,7 @@ let score = 0;
 showQuestion();
 
 //Evento
-document.querySelector('.scoreArea button').addEventListener('click', resetEvent);
+document.querySelector('.scoreArea button').addEventListener('click');
 
 //Funções
 function showQuestion() {
@@ -49,6 +49,21 @@ function finishQuiz() {
     document.querySelector('.Text').innerHTML = `<h1> Quiz Finalizado!</h1> 
         <h3> Sua Pontuação Final: ${score} pontos! </h3>`;
 
+        // usuarioModel.inserirPontos(idUsuario, idQuiz, score)
+        //     .then(
+        //         function (resultado) {
+        //             res.json(resultado);
+        //         }
+        //     ).catch(
+        //         function (erro) {
+        //             console.log(erro);
+        //             console.log(
+        //                 "\nHouve um erro ao realizar o insert! Erro: ",
+        //                 erro.sqlMessage
+        //             );
+        //             res.status(500).json(erro.sqlMessage);
+        //         }
+        //     );
 
     document.querySelector('.scoreArea').style.display = 'block';
     document.querySelector('.questionArea').style.display = 'none';

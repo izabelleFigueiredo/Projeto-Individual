@@ -125,9 +125,32 @@ from postagem
 left join usuario on fkUsuario = idUsuario
 left join tema on fkTema = idTema;
 
+-- quantidade de postagens do usuario
+select count(idPostagem) from postagem where fkUsuario = 2;
+
 show tables;
 desc postagem;
 SELECT * FROM personagem;
 SELECT * FROM usuario;
 select * from postagem;
 select * from tema;
+select * from curtir;
+
+
+-- select pro grafico do index
+select nickname from usuario where (
+select count(idUsuario)
+from curtir
+join usuario on idUsuario = fkUsuario 
+);
+
+desc pontuacao;
+insert into pontuacao (fkUsuario, fkQuiz, pontos, dataPontuacao)values
+(1, 1, 18)
+
+insert into curtir (fkUsuario, fkPostagem) values
+(1, 1),
+(1, 2),
+(2, 3),
+(2, 4),
+(2, 4);

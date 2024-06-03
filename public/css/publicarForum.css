@@ -89,9 +89,14 @@ a:hover {
     height: 50vh;
     width: 100vh;
 }
+.divPost {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
 .inp {
-    width: 80%;
-    height: 50%;
+    width: 500px;
+    height: 150px;
     text-align: start;
 }
 .slc { /* class de cada input */

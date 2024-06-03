@@ -8,7 +8,7 @@
     <title>Minha Área | WanoQuest</title>
 </head>
 
-<body>
+<body onload="consultarDados()">
     <header>
         <div class="logo">
             <a href="index.html"><img src="images/logo.svg" alt="logo"> </a>
@@ -78,6 +78,25 @@
     b_email.innerHTML = sessionStorage.EMAIL_USUARIO;
     b_imgPersonagem.innerHTML = `<img src='images/personagens/${sessionStorage.PERSONAGEM_USUARIO}.jpg' alt="foto perfil">`
 
+    // function consultarDados() {
+    //     fetch("/avisos/consultar").then(function (resposta) {
+    //         if (resposta.ok) {
+    //             if (resposta.status == 204) {
+    //                 feed.appendChild(mensagem);
+    //                 throw "Nenhum resultado encontrado!!";
+    //             }
+    //             resposta.json().then(function (resposta) {
+    //                 console.log("Dados recebidos: ", JSON.stringify(resposta));
 
+    //                 postagensRealizadas.innerHTML = 0
+                    
+    //             });
+    //         } else {
+    //             throw ('Houve um erro na API!');
+    //         }
+    //     }).catch(function (resposta) {
+    //         console.error(resposta);
+    //     });
+    // }
 
 </script>

@@ -22,8 +22,23 @@ function cadastrar(nome, nickname, email, senha, personagem) {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+// // add: qtdCurtidas, qtdPontuacao, qtdQuiz
+// function consultar(idUsuario) {
+//     var instrucaoSql = `select count(idPostagem) from postagem where fkUsuario = ${idUsuario};`;
+//     return database.executar(instrucaoSql);
+  
+//   }
+
+//   function inserirPontos(idUsuario, idQuiz, score) {
+//     var instrucaoSql = `insert into pontuacao (fkUsuario, fkQuiz, pontos)values
+//     (${idUsuario}, ${idQuiz}, ${score}),`;
+//     return database.executar(instrucaoSql);
+  
+//   }
 
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    // consultar,
+    // inserirPontos
 };
