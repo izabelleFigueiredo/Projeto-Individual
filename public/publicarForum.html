@@ -19,14 +19,15 @@
             <h6><a href="forum.html">Fórum</a></h6>
         </div>
         <div class="links">
-            <h6><a href="user.html"> <span id="nickname">  </span></h6>
-                <span id="imgPersonagem"> </span> </a>
+            <h6><a href="user.html"> <span id="nickname"> </span></h6>
+            <span id="imgPersonagem"> </span> </a>
         </div>
     </header>
 
     <div class="container">
         <div class="divInput">
-            <input onkeydown="verificarTamanho()" maxlength="200" type="text" id="inpMsg" class="inp" placeholder="Insira uma mensagem...">
+            <input onkeydown="verificarTamanho()" maxlength="200" type="text" id="inpMsg" class="inp"
+                placeholder="Insira uma mensagem...">
             <h6 id="msgTeclasRestantes"> </h6>
             <select class="slc" id="slctTema">
                 <option selected disabled value="#">Selecione um tema</option>
@@ -54,29 +55,67 @@
     </div>
 
 </body>
+
 </html>
 <script>
-nickname.innerHTML = sessionStorage.NICKNAME_USUARIO;
-imgPersonagem.innerHTML = `<img src='images/personagens/${sessionStorage.PERSONAGEM_USUARIO}.jpg' alt="foto perfil">`
+    nickname.innerHTML = sessionStorage.NICKNAME_USUARIO;
+    imgPersonagem.innerHTML = `<img src='images/personagens/${sessionStorage.PERSONAGEM_USUARIO}.jpg' alt="foto perfil">`
 
-function verificarTamanho() {
-    let contagem = (inpMsg.value).length;
-    let limite = 200;
-    msgTeclasRestantes.innerHTML = `Você ainda pode digitar ${limite - contagem} letras!`;
+    function verificarTamanho() {
+        let contagem = (inpMsg.value).length;
+        let limite = 200;
+        msgTeclasRestantes.innerHTML = `Você ainda pode digitar ${limite - contagem} letras!`;
 
-    if (contagem <= limite ) {
-    }
-    else {
-        msgTeclasRestantes.innerHTML = `Limite de caracteres atingido!`;
+        if (contagem <= limite) {
+        }
+        else {
+            msgTeclasRestantes.innerHTML = `Limite de caracteres atingido!`;
 
+        }
     }
-}
-function publicar() {
-    if (slctTema.value == '#') {
-        alert('Selecione um tema!');
-    }if (inpMsg.value == '') {
-        alert('Escreva uma mensagem antes de publicar algo!');
+    function publicar() {
+        if (slctTema.value == '#') {
+            alert('Selecione um tema!');
+        } if (inpMsg.value == '') {
+            alert('Escreva uma mensagem antes de publicar algo!');
+        }
+        else {
+            // WEB DATA VIZ - EM IMPLEMENTACAO --------------------------------------------------------------
+            var idUsuario = sessionStorage.ID_USUARIO;
+
+            var corpo = {
+                titulo: form_postagem.titulo.value,
+                descricao: form_postagem.descricao.value
+            }
+
+            fetch(`/avisos/publicar/${idUsuario}`, {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(corpo)
+            }).then(function (resposta) {
+
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
+                    window.location = "/dashboard/mural.html";
+                    limparFormulario();
+                    finalizarAguardar();
+                } else if (resposta.status == 404) {
+                    window.alert("Deu 404!");
+                } else {
+                    throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                finalizarAguardar();
+            });
+
+            return false;
+
+        }
     }
-}
 
 </script>
