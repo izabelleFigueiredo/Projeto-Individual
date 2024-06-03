@@ -20,7 +20,7 @@
         </div>
         <div class="links">
             <h6><a href="user.html"> <span id="nickname"> </span></h6>
-                <span id="imgPersonagem"> </span> </a>
+            <span id="imgPersonagem"> </span> </a>
         </div>
     </header>
 
@@ -32,33 +32,64 @@
     <div class="comentarios">
         <div class="comm">
             <div class="infoUser">
-                <span id="imgPersonagem" class="foto"> <img src="images/personagens/3.jpg" </span>
+                <div class="usuario">
+                    <span id="imgPersonagem" class="foto"> <img src="images/personagens/3.jpg"> </span>
                     <span id="nickname" class="nickname"> nickname </span>
-                    <span id="curtida" onclick="funcCurtir()"> <img src="images/curtir.png"></span>
+                </div>
+                <div class="curtir">
+                    <span id="curtida" onclick="funcCurtir(this)"> <img src="images/curtir.png"></span>
+                </div>
             </div>
-            <div class="tituloTopico">Tópico: <span id="topico"> Kuri em Queda </span> </div> <hr>
+            <div class="tituloTopico">Tópico: <span id="topico">  Kuri e a Capital das Flores</span> </div>
+            <hr>
             <div class="mensagem"><span id="mensagem">Curabitur sit amet libero suscipit, convallis ipsum eget,
                     tristique urna. Nulla sit amet nulla ac quam dignissim suscipit sit amet a risus. Curabitur vel
                     augue malesuada, pellentesque diam et, euismod massa. </span></div>
         </div>
         <div class="comm">
             <div class="infoUser">
-                <span id="imgPersonagem" class="foto"> <img src="images/personagens/3.jpg" </span>
+                <div class="usuario">
+                    <span id="imgPersonagem" class="foto"> <img src="images/personagens/3.jpg"> </span>
                     <span id="nickname" class="nickname"> nickname </span>
-                    <span id="curtida" onclick="funcCurtir()"> <img src="images/curtir.png"></span>
+                </div>
+                <div class="curtir">
+                    <span id="curtida" onclick="funcCurtir(this)"> <img src="images/curtir.png"></span>
+                </div>
             </div>
-            <div class="tituloTopico">Tópico: <span id="topico"> Kuri em Queda </span> </div><hr>
+            <div class="tituloTopico">Tópico: <span id="topico">  Kuri e a Capital das Flores</span> </div>
+            <hr>
             <div class="mensagem"><span id="mensagem">Curabitur sit amet libero suscipit, convallis ipsum eget,
                     tristique urna. Nulla sit amet nulla ac quam dignissim suscipit sit amet a risus. Curabitur vel
                     augue malesuada, pellentesque diam et, euismod massa. </span></div>
         </div>
         <div class="comm">
             <div class="infoUser">
-                <span id="imgPersonagem" class="foto"> <img src="images/personagens/3.jpg" </span>
+                <div class="usuario">
+                    <span id="imgPersonagem" class="foto"> <img src="images/personagens/3.jpg"> </span>
                     <span id="nickname" class="nickname"> nickname </span>
-                    <span id="curtida" onclick="funcCurtir()"> <img src="images/curtir.png"></span>
+                </div>
+                <div class="curtir">
+                    <span id="curtida" onclick="funcCurtir(this)"> <img src="images/curtir.png"></span>
+                </div>
             </div>
-            <div class="tituloTopico">Tópico: <span id="topico"> Kuri em Queda </span> </div><hr>
+            <div class="tituloTopico">Tópico: <span id="topico"> Kuri e a Capital das Flores</span> </div>
+            <hr>
+            <div class="mensagem"><span id="mensagem">Curabitur sit amet libero suscipit, convallis ipsum eget,
+                    tristique urna. Nulla sit amet nulla ac quam dignissim suscipit sit amet a risus. Curabitur vel
+                    augue malesuada, pellentesque diam et, euismod massa. </span></div>
+        </div>
+        <div class="comm">
+            <div class="infoUser">
+                <div class="usuario">
+                    <span id="imgPersonagem" class="foto"> <img src="images/personagens/3.jpg"> </span>
+                    <span id="nickname" class="nickname"> nickname </span>
+                </div>
+                <div class="curtir">
+                    <span id="curtida" onclick="funcCurtir(this)"> <img src="images/curtir.png"></span>
+                </div>
+            </div>
+            <div class="tituloTopico">Tópico: <span id="topico"> Kuri e a Capital das Flores</span> </div>
+            <hr>
             <div class="mensagem"><span id="mensagem">Curabitur sit amet libero suscipit, convallis ipsum eget,
                     tristique urna. Nulla sit amet nulla ac quam dignissim suscipit sit amet a risus. Curabitur vel
                     augue malesuada, pellentesque diam et, euismod massa. </span></div>
@@ -67,31 +98,33 @@
 </body>
 <footer>
     <div class="contato">
-    <h3>Contato</h3>
-    <div class="icones">
-        <a href="https://github.com/izabelleFigueiredo/Projeto-WanoQuest"><img src="images/icon/github.png" alt="github"></a>
-        <a href="mailto:izabelle.figueiredo@sptech.school"><img src="images/icon/email.png" alt="email"></a>
-        <a href="https://www.instagram.com/izafrefire/"><img src="images/icon/instagram.png" alt="instagram"></a>
+        <h3>Contato</h3>
+        <div class="icones">
+            <a href="https://github.com/izabelleFigueiredo/Projeto-WanoQuest"><img src="images/icon/github.png"
+                    alt="github"></a>
+            <a href="mailto:izabelle.figueiredo@sptech.school"><img src="images/icon/email.png" alt="email"></a>
+            <a href="https://www.instagram.com/izafrefire/"><img src="images/icon/instagram.png" alt="instagram"></a>
+        </div>
     </div>
-</div>
 </footer>
 
 </html>
 <script>
 
-nickname.innerHTML = sessionStorage.NICKNAME_USUARIO;
-imgPersonagem.innerHTML = `<img src='images/personagens/${sessionStorage.PERSONAGEM_USUARIO}.jpg' alt="foto perfil">`
+    nickname.innerHTML = sessionStorage.NICKNAME_USUARIO;
+    imgPersonagem.innerHTML = `<img src='images/personagens/${sessionStorage.PERSONAGEM_USUARIO}.jpg' alt="foto perfil">`
 
     function postar() {
         window.location.href = "publicarForum.html";
     }
 
-    function funcCurtir() {
-        if (curtida.innerHTML == `<img src="images/curtir.png">`) {
-            curtida.innerHTML = `<img src="images/curtirDo.png">`
+    function funcCurtir(element) {
+        const img = element.querySelector('img');
+        if (img.src.includes('curtir.png')) {
+            img.src = "images/curtirDo.png";
         }
         else {
-        curtida.innerHTML = `<img src="images/curtir.png">`;
+            img.src = "images/curtir.png"
         }
     }
 </script>
