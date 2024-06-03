@@ -1,4 +1,5 @@
--- drop database WanoQuest;
+-- 
+drop database WanoQuest;
 create database WanoQuest;
 use WanoQuest;
 
@@ -8,16 +9,17 @@ nome varchar(45) not null,
 descricao varchar(100)
 );
 
+create table tema (
+idTema int primary key auto_increment,
+titulo varchar(45)
+);
+
 create table quiz (
 idQuiz int primary key auto_increment,
 nome varchar(45) not null,
-descricao varchar(200),
-qtdQuestoes int not null
-);
-
-create table artigo (
-idArtigo int primary key auto_increment,
-titulo varchar(45)
+qtdPontos int not null,
+fkTema int,
+foreign key (fkTema) references tema(idTema)
 );
 
 create table usuario (
@@ -30,6 +32,15 @@ fkPersonagem int,
 
 constraint chkEmail check (email like '%@%.com'),
 foreign key (fkPersonagem) references personagem(idPersonagem)
+);
+
+create table postagem (
+idPostagem int primary key auto_increment,
+mensagem varchar(200),
+fkUsuario int,
+fkTema int,
+foreign key (fkUsuario) references usuario(idUsuario),
+foreign key (fkTema) references tema(idTema)
 );
 
 create table pontuacao (
@@ -45,11 +56,11 @@ primary key (fkUsuario, fkQuiz)
 
 create table curtir (
 fkUsuario int,
-fkArtigo int,
+fkPostagem int,
 dataCurtida date,
 
 foreign key (fkUsuario) references usuario(idUsuario),
-foreign key (fkArtigo) references artigo(idArtigo)
+foreign key (fkPostagem) references postagem(idPostagem)
 );
 
 insert into personagem (nome) values
@@ -74,21 +85,13 @@ insert into personagem (nome) values
 ('Kozuki Hiyori'),
 ('Kurozumi Orochi');
 
--- insert into usuario (nome, email, senha, fkPersonagem) values ('Fernando Alves', 'fernando@outlook.com', md5('ferdARRO1920#'), 1),('Clara Fernandes', 'clara.fernandes@outlook.com', md5('#cald.4509_'), 11);
-
-insert into quiz values (default, 'Onigashima em Chamas', 'Região de Onigashima, questões englobam o ODS 1 - Erradicação da fome', 10);
-
--- (default, 'Kuri Desumana', 'Região de Kuri, questões englobam o ODS 6 - Diminuição das desigualdades', 14);
+-- 
+insert into usuario (nome, nickname, email, senha, fkPersonagem) values ('Fernando Alves', 'Fern', 'fernando@outlook.com', md5('Ma1#'), 7);
+insert into tema values (default, 'Kuri e a Capital das Flores');
+insert into quiz values (default, 'Kuri e a Capital das Flores', 16, 1);
 
 -- insert into pontuacao values (1, 1, 8);
-
-insert into artigo (titulo) values ('As Desigualdades em Kuri');
--- ('O que um Imperador faria pelo One Piece?'),
--- ('Trabalho Escravo e Indústrias Poluentes');
-
 -- insert into curtir values (1, 1),
-
-
 
 select usuario.nome,
 		quiz.nome,
@@ -109,8 +112,22 @@ from curtir
 join usuario u on fkUsuario = idUsuario
 join artigo a on fkArtigo = idArtigo;        
 
+
+-- teste de listagem postagens
+insert into postagem values
+(default, 'mensagem usuario', 1, 1);
+
+-- function listar postagens
+select idPostagem, mensagem, fkUsuario, fkTema,
+fkPersonagem, nickname,
+titulo
+from postagem
+left join usuario on fkUsuario = idUsuario
+left join tema on fkTema = idTema;
+
+show tables;
+desc postagem;
 SELECT * FROM personagem;
 SELECT * FROM usuario;
-
-SELECT * FROM usuario WHERE email = 'joao@.com'  AND senha = MD5('122');
-select * from usuario;
+select * from postagem;
+select * from tema;

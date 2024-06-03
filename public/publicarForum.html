@@ -26,6 +26,7 @@
 
     <div class="container">
         <div class="divInput">
+        <form id="form_postagem" method="post" onsubmit="return publicar()">
             <input onkeydown="verificarTamanho()" maxlength="200" type="text" id="inpMsg" class="inp"
                 placeholder="Insira uma mensagem...">
             <h6 id="msgTeclasRestantes"> </h6>
@@ -33,7 +34,8 @@
                 <option selected disabled value="#">Selecione um tema</option>
                 <option value="1">Kuri e a Capital das Flores</option>
             </select>
-            <button class="botao" onclick="publicar()">Publicar</button>
+            <button type="submit" class="botao">Publicar</button>
+        </form>
         </div>
         <div class="recados">
             <h2>Lembre-se!</h2>
@@ -61,6 +63,8 @@
     nickname.innerHTML = sessionStorage.NICKNAME_USUARIO;
     imgPersonagem.innerHTML = `<img src='images/personagens/${sessionStorage.PERSONAGEM_USUARIO}.jpg' alt="foto perfil">`
 
+    console.log(sessionStorage.ID_USUARIO)
+
     function verificarTamanho() {
         let contagem = (inpMsg.value).length;
         let limite = 200;
@@ -84,8 +88,8 @@
             var idUsuario = sessionStorage.ID_USUARIO;
 
             var corpo = {
-                titulo: form_postagem.titulo.value,
-                descricao: form_postagem.descricao.value
+                tema: form_postagem.slctTema.value,
+                mensagem: form_postagem.inpMsg.value
             }
 
             fetch(`/avisos/publicar/${idUsuario}`, {
@@ -100,9 +104,7 @@
 
                 if (resposta.ok) {
                     window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
-                    window.location = "/dashboard/mural.html";
-                    limparFormulario();
-                    finalizarAguardar();
+                    window.location = "forum.html";
                 } else if (resposta.status == 404) {
                     window.alert("Deu 404!");
                 } else {
@@ -110,7 +112,6 @@
                 }
             }).catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
-                finalizarAguardar();
             });
 
             return false;

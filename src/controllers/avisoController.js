@@ -39,10 +39,10 @@ function listarPorUsuario(req, res) {
         );
 }
 
-function pesquisarDescricao(req, res) {
-    var descricao = req.params.descricao;
+function pesquisarmensagem(req, res) {
+    var mensagem = req.params.mensagem;
 
-    avisoModel.pesquisarDescricao(descricao)
+    avisoModel.pesquisarmensagem(mensagem)
         .then(
             function (resultado) {
                 if (resultado.length > 0) {
@@ -61,18 +61,19 @@ function pesquisarDescricao(req, res) {
 }
 
 function publicar(req, res) {
-    var titulo = req.body.titulo;
-    var descricao = req.body.descricao;
+    var tema = req.body.tema;
+    var mensagem = req.body.mensagem;
     var idUsuario = req.params.idUsuario;
 
-    if (titulo == undefined) {
+
+    if (tema == undefined) {
         res.status(400).send("O título está indefinido!");
-    } else if (descricao == undefined) {
+    } else if (mensagem == undefined) {
         res.status(400).send("A descrição está indefinido!");
     } else if (idUsuario == undefined) {
         res.status(403).send("O id do usuário está indefinido!");
     } else {
-        avisoModel.publicar(titulo, descricao, idUsuario)
+        avisoModel.publicar(tema, mensagem, idUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -89,10 +90,10 @@ function publicar(req, res) {
 }
 
 function editar(req, res) {
-    var novaDescricao = req.body.descricao;
+    var novamensagem = req.body.mensagem;
     var idAviso = req.params.idAviso;
 
-    avisoModel.editar(novaDescricao, idAviso)
+    avisoModel.editar(novamensagem, idAviso)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -129,7 +130,7 @@ function deletar(req, res) {
 module.exports = {
     listar,
     listarPorUsuario,
-    pesquisarDescricao,
+    pesquisarmensagem,
     publicar,
     editar,
     deletar

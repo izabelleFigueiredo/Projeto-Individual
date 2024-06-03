@@ -73,6 +73,7 @@ a:hover{
 }
 #nickname {
     color: #E3BF23;
+    font-size: 20px;
 }
 
 /* CONTEUDO DA PAGINA   */
@@ -105,6 +106,11 @@ button:hover {
     color: #E3BF23;
 }
 
+.usuario {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 .comentarios{
     display: flex;
     flex-wrap: wrap;
@@ -117,6 +123,9 @@ button:hover {
     width: 30px;
     border-radius: 100%;
 }
+.comentarios .foto img {
+    width: 40px;
+}
 .comm {
     display: flex;
     flex-direction: column;
@@ -124,14 +133,13 @@ button:hover {
     max-width: 40%;
     background-color: #EFEDEE ;
     border: 2px solid #fff;
-    padding: 1%;
+    padding: 17px;
     border-radius: 30px;
     gap: 10px;
 }
 .infoUser {
     display: flex;
     justify-content: space-between;
-    padding: 8px 10px 0;
 }
 
 /* FOOTER */
