@@ -99,64 +99,53 @@ a:hover{
     gap: 50px;
 }
 .topicoTema {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    height: 250px;
-    /* background-color: #222 ; */
-    align-items: center;
-    border-radius: 30px;
-    color: #E3BF23;
-    font-size: 22px;
-    justify-content: end;
-    transition: 0.4s;
     position: relative;
-    background-size: cover;
-    background-repeat: no-repeat;
-    mask-image: linear-gradient(to top, #00000083  20%, black 30%);
-
+    width: 300px;
+    height: 350px;
+    box-shadow: 0px 0px 20px 4px #F7BECD;
+    border-radius: 30px;
+    transition: .4s;
 }
-.topicoTema h6 {
+.topicoTema img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+}
+.topicoTema h3, h5 {
     position: absolute;
-    padding: 25px;
+    padding: 80px 20px;
+    width: 100%;
+    height: 100%;
+    text-align: justify;
+    font-size: 16px;
+}
+.topicoTema h3 {
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    color:#E3BF23;
+}
+.topicoTema:hover  .back{
+   height: 100%;
+   cursor: pointer;
 }
 .topicoTema:hover {
-    transform: scale(1.05);
-    /* .front {
-        display: none;
-    }
-    .back {
-        display: flex;
-    } */
+    transform: scale(1.1);
 }
-
-/* PÁGINA DE MENU DE QUIZZES */
-.front {
-    position: relative;
-    z-index: 10;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-.front:hover {
-    z-index: 0;
-}
-.back:hover {
-    z-index: 10;
-}
-
-/* .front .img {
-    z-index: 10;
-    background-size: cover;
-    background-repeat: no-repeat;
-} */
  .back {
-    display: flex;
+    border-radius: 30px;
+    background-color: #00000097;
+    color: #fff;
     position: absolute;
-    background-color: #EFEDEE;
-    color: #E3BF23;
-    opacity: 0;
-}
-
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    transition: .5s ease;
+ }
 
 /* FOOTER */
 footer{

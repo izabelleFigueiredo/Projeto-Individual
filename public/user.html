@@ -19,7 +19,7 @@
             <h6><a href="forum.html">Fórum</a></h6>
         </div>
         <div class="links">
-            <h6 class="btnSair"><a href="index.html">Sair</a></h6>
+            <h6 onclick="sair()" class="btnSair"><a href="index.html"> Sair </a></h6>
         </div>
     </header>
 
@@ -133,6 +133,13 @@
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados: ${error.message}`);
             });
+    }
+
+    function sair() {
+        sessionStorage.clear()
+        console.log(sessionStorage.NOME_USUARIO);
+        console.log(sessionStorage.NICKNAME_USUARIO);
+        console.log(sessionStorage.EMAIL_USUARIO);
     }
 
 </script>
