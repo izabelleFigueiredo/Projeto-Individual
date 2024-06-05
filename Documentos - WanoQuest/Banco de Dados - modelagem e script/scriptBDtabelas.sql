@@ -133,18 +133,27 @@ select * from quiz;
 select * from curtir;
 select * from pontuacao;
 
--- select pro grafico do index
-select nickname from usuario where (
-select count(idUsuario)
+-- select pro grafico do index - curtidas
+select nickname, count(idUsuario)
 from curtir
 join usuario on idUsuario = fkUsuario 
-);
+group by nickname
+;
+
+-- select pro grafico do index - pontuacao
+select ifnull(nickname, 'Nenhum Registro') as nickname,  ifnull(sum(pontos), 0) as qtdPontos
+from pontuacao
+join usuario on idUsuario = fkUsuario 
+group by idUsuario
+limit 3;
+
+-- select pra página do usuário - pontuacao
+select sum(pontos) as totalPontos from pontuacao where fkUsuario = 3;
+
+-- select pra página do usuário - quizzes realizados
+-- select pra página do usuário - suas postagens
+-- select pra página do usuário - curtidas recebidas
+
 
 -- insert into pontuacao (fkUsuario, fkQuiz, pontos)values (1, 1, 18), (2, 1, 14);
 
-insert into curtir (fkUsuario, fkPostagem) values
-(1, 1),
-(1, 2),
-(2, 3),
-(2, 4),
-(2, 4);

@@ -9,8 +9,9 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Home | WanoQuest</title>
 </head>
+<!-- onload="atualizarGrafico() -->
 
-<body>
+<body onload="obterDadosGrafico()">
     <header>
         <div class="logo">
             <a href="index.html#inicio"><img src="images/logo.svg" alt="logo"></a>
@@ -56,10 +57,10 @@
             </div>
             <div class="graficoE">
                 <h4>Usuários com mais curtidas</h4>
-                    <canvas id="graficoCurtidas"></canvas>
-                </div>
+                <canvas id="graficoCurtidas"></canvas>
             </div>
         </div>
+    </div>
     </div>
 
     <div class="divProjeto" id="divProjeto">
@@ -73,16 +74,20 @@
 
                 <div class="dir1">
                     <!-- <h1>One Piece</h1> -->
-                    <h5>One Piece é uma série de anime e mangá criada por Eiichiro Oda, que narra a aventura de Monkey D. Luffy em busca do lendário
-                        tesouro deixado pelo antigo rei dos piratas: o One Piece! Ao decorrer da obra, Oda aborda muitos temas relevantes, como a 
-                        amizade, liberdade, justiça e questões sociais como pobreza, desigualdade e luta contra a opressão. </h5>
+                    <h5>One Piece é uma série de anime e mangá criada por Eiichiro Oda, que narra a aventura de Monkey
+                        D. Luffy em busca do lendário
+                        tesouro deixado pelo antigo rei dos piratas: o One Piece! Ao decorrer da obra, Oda aborda muitos
+                        temas relevantes, como a
+                        amizade, liberdade, justiça e questões sociais como pobreza, desigualdade e luta contra a
+                        opressão. </h5>
                 </div>
 
             </div>
             <div class="projP2">
                 <div class="esq2">
                     <!-- <h1>Title</h1>  -->
-                    <h5>Aqui, exploramos como essa obra pode provocar reflexões profundas sobre situações e desafios contemporâneos que, assim 
+                    <h5>Aqui, exploramos como essa obra pode provocar reflexões profundas sobre situações e desafios
+                        contemporâneos que, assim
                         como em One Piece exigem coragem e solidariedade para serem enfrentados. </h5>
                 </div>
                 <div class="dir2">
@@ -101,7 +106,8 @@
         </div>
         <div class="textos">
             <div class="esqSB">
-                <h5>Me chamo Izabelle Carmelita Figueiredo e tenho 18 anos. Atualmente estou no primeiro semestre de Sistemas da Informação na SPTech.</h5>
+                <h5>Me chamo Izabelle Carmelita Figueiredo e tenho 18 anos. Atualmente estou no primeiro semestre de
+                    Sistemas da Informação na SPTech.</h5>
                 <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer suscipit metus nec urna efficitur,
                     a porttitor sapien sagittis. Vivamus fringilla odio a tortor blandit, a blandit magna congue. In
                     tempus molestie nunc eget lacinia. Curabitur luctus eleifend eros a suscipit. Integer elementum
@@ -109,8 +115,9 @@
                 </h5>
             </div>
             <div class="dirSB">
-                <h5>Assisto o anime desde 2021 e o mangá desde 2024. One Piece é a obra que mais gosto pela sua profundidade e qualidade. 
-                    
+                <h5>Assisto o anime desde 2021 e o mangá desde 2024. One Piece é a obra que mais gosto pela sua
+                    profundidade e qualidade.
+
                 </h5>
                 <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer suscipit metus nec urna efficitur,
                     a porttitor sapien sagittis. Vivamus fringilla odio a tortor blandit, a blandit magna congue. In
@@ -119,101 +126,173 @@
                 </h5>
             </div>
         </div>
-
     </div>
 
     <footer>
         <div class="contato">
-        <h3>Contato</h3>
-        <div class="icones">
-            <a href="https://github.com/izabelleFigueiredo/Projeto-WanoQuest"><img src="images/icon/github.png" alt="github"></a>
-            <a href="mailto:izabelle.figueiredo@sptech.school"><img src="images/icon/email.png" alt="email"></a>
-            <a href="https://www.instagram.com/izafrefire/"><img src="images/icon/instagram.png" alt="instagram"></a>
+            <h3>Contato</h3>
+            <div class="icones">
+                <a href="https://github.com/izabelleFigueiredo/Projeto-WanoQuest"><img src="images/icon/github.png"
+                        alt="github"></a>
+                <a href="mailto:izabelle.figueiredo@sptech.school"><img src="images/icon/email.png" alt="email"></a>
+                <a href="https://www.instagram.com/izafrefire/"><img src="images/icon/instagram.png"
+                        alt="instagram"></a>
+            </div>
         </div>
-    </div>
     </footer>
 </body>
 <script>
-// GRÁFICO DE USUÁRIOS COM MAIS PONTOS -------------------------------------------
+    // GRÁFICO DE USUÁRIOS COM MAIS CURTIDAS ------------------------------------------------------------------------
 
-// nome dos usuários
-let user1 = 'jon';
-let user2 = 'jan';
-let user3 = 'jao';
-// pontuacao dos usuários
-let user1Pts = 17;
-let user2Pts = 14;
-let user3Pts = 12;
-    const gu = document.getElementById('graficoUser');
-    new Chart(gu, {
-        type: 'bar',
-        data: {
-            labels: [`Usuários`],
-            datasets: [{
-                label: `${user1}`,
-                data: [`${user1Pts}`],
-                borderWidth: 1,
-            },
-            {
-                label: `${user2}`,
-                data: [`${user2Pts}`],
-                borderWidth: 1,
-            },
-            {
-                label:`${user3}`,
-                data: [`${user3Pts}`],
-                borderWidth: 1,
+    // // nome dos usuários
+    // let userCurt1 = 'mon';
+    // let userCurt2 = 'clan';
+    // let userCurt3 = 'muss';
+    // // pontuacao dos usuários
+    // let user1Curt = 35;
+    // let user2Curt = 28;
+    // let user3Curt = 19;
+    //     const gc = document.getElementById('graficoCurtidas');
+    //     new Chart(gc, {
+    //         type: 'bar',
+    //         data: {
+    //             labels: [`Usuários`],
+    //             datasets: [{
+    //                 label: `${userCurt1}`,
+    //                 data: [`${user1Curt}`],
+    //                 borderWidth: 1,
+    //             },
+    //             {
+    //                 label: `${userCurt2}`,
+    //                 data: [`${user2Curt}`],
+    //                 borderWidth: 1,
+    //             },
+    //             {
+    //                 label:`${userCurt3}`,
+    //                 data: [`${user3Curt}`],
+    //                 borderWidth: 1,
+    //             }
+    //         ]
+    //         },
+    //         options: {
+    //             scales: {
+    //                 y: {
+    //                     beginAtZero: true
+    //                 }
+    //             }
+    //         }
+    //     });
+
+    // INSERINDO DADOS NOS GRÁFICOS
+    function obterDadosGrafico() {
+        let idUsuario = sessionStorage.ID_USUARIO
+        // if (proximaAtualizacao != undefined) {
+        //     clearTimeout(proximaAtualizacao);
+        // }
+
+        fetch(`/medidas/ultimas/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta, idUsuario);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
             }
-        ]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc) e materializa-o na página
+
+    function plotarGrafico(resposta) {
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        if (resposta.length == 1) {
+            var usuarioTop1 = resposta[0].nickname;
+            var usuarioTop2 = 'Não Registrado';
+            var usuarioTop3 = 'Não Registrado';
+            var usuarioTop1Pts = resposta[0].qtdPontos;
+            var usuarioTop2Pts = 0;
+            var usuarioTop3Pts = 0;
         }
-    });
-
-
-// GRÁFICO DE USUÁRIOS COM MAIS CURTIDAS ------------------------------------------------------------------------
-
-// nome dos usuários
-let userCurt1 = 'mon';
-let userCurt2 = 'clan';
-let userCurt3 = 'muss';
-// pontuacao dos usuários
-let user1Curt = 35;
-let user2Curt = 28;
-let user3Curt = 19;
-    const gc = document.getElementById('graficoCurtidas');
-    new Chart(gc, {
-        type: 'bar',
-        data: {
-            labels: [`Usuários`],
-            datasets: [{
-                label: `${userCurt1}`,
-                data: [`${user1Curt}`],
-                borderWidth: 1,
-            },
-            {
-                label: `${userCurt2}`,
-                data: [`${user2Curt}`],
-                borderWidth: 1,
-            },
-            {
-                label:`${userCurt3}`,
-                data: [`${user3Curt}`],
-                borderWidth: 1,
-            }
-        ]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
+        else if (resposta.length == 2) {
+            var usuarioTop1 = resposta[0].nickname;
+            var usuarioTop2 = resposta[1].nickname;
+            var usuarioTop3 = 'Não Registrado';
+            var usuarioTop1Pts = resposta[0].qtdPontos;
+            var usuarioTop2Pts = resposta[1].qtdPontos;
+            var usuarioTop3Pts = 0;
         }
-    });
+        else {
+            var usuarioTop1 = resposta[0].nickname;
+            var usuarioTop2 = resposta[1].nickname;
+            var usuarioTop3 = resposta[2].nickname;
+            var usuarioTop1Pts = resposta[0].qtdPontos;
+            var usuarioTop2Pts = resposta[1].qtdPontos;
+            var usuarioTop3Pts = resposta[2].qtdPontos;
+        }
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: `${usuarioTop1}`,
+                data: [`${usuarioTop1Pts}`],
+                fill: false,
+            },
+            {
+                label: `${usuarioTop2}`,
+                data: [`${usuarioTop2Pts}`],
+                fill: false,
+            },
+            {
+                label: `${usuarioTop3}`,
+                data: [`${usuarioTop3Pts}`],
+                fill: false,
+            }
+            ]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        labels.push('Usuários');
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            dados.datasets[i].data.push(registro.nickname);
+            dados.datasets[i].data.push(registro.qtdPontos);
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'bar',
+            data: dados,
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`graficoUser`),
+            config
+        );
+    }
+
 </script>

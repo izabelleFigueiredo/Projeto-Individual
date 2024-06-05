@@ -8,7 +8,7 @@
     <title>Minha Área | WanoQuest</title>
 </head>
 
-<body onload="consultarDados()">
+<body onload="obterDadosUserPontuacao(), obterDadosUserQuizzes(), obterDadosUserPosts()">
     <header>
         <div class="logo">
             <a href="index.html"><img src="images/logo.svg" alt="logo"> </a>
@@ -68,35 +68,71 @@
 
 </html>
 <script>
-    // console.log('nickname: ', sessionStorage.NICKNAME_USUARIO);
-    // console.log('personagem: ', sessionStorage.PERSONAGEM_USUARIO);
-    // console.log('email: ', sessionStorage.EMAIL_USUARIO);
-    // console.log('nome: ', sessionStorage.NOME_USUARIO);
+
+    let idUsuario = sessionStorage.ID_USUARIO
 
     b_nome.innerHTML = sessionStorage.NOME_USUARIO;
     b_nickname.innerHTML = sessionStorage.NICKNAME_USUARIO;
     b_email.innerHTML = sessionStorage.EMAIL_USUARIO;
     b_imgPersonagem.innerHTML = `<img src='images/personagens/${sessionStorage.PERSONAGEM_USUARIO}.jpg' alt="foto perfil">`
 
-    // function consultarDados() {
-    //     fetch("/avisos/consultar").then(function (resposta) {
-    //         if (resposta.ok) {
-    //             if (resposta.status == 204) {
-    //                 feed.appendChild(mensagem);
-    //                 throw "Nenhum resultado encontrado!!";
-    //             }
-    //             resposta.json().then(function (resposta) {
-    //                 console.log("Dados recebidos: ", JSON.stringify(resposta));
+    function obterDadosUserPontuacao() {
 
-    //                 postagensRealizadas.innerHTML = 0
-                    
-    //             });
-    //         } else {
-    //             throw ('Houve um erro na API!');
-    //         }
-    //     }).catch(function (resposta) {
-    //         console.error(resposta);
-    //     });
-    // }
+        fetch(`/medidas/userPontuacao/${idUsuario}`).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    // resposta.reverse();
+                    var totalPontos = resposta[0].totalPontos;
+
+                    pontuacaoTotal.innerHTML = totalPontos
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados: ${error.message}`);
+            });
+    }
+
+    function obterDadosUserQuizzes() {
+
+        fetch(`/medidas/userQuiz/${idUsuario}`).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    // resposta.reverse();
+                    var totalQuiz = resposta[0].qtdQuizRealizado;
+
+                    quizzesRealizados.innerHTML = totalQuiz;
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados: ${error.message}`);
+            });
+    }
+
+    function obterDadosUserPosts() {
+        fetch(`/medidas/userPost/${idUsuario}`).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    // resposta.reverse();
+                    var totalPosts = resposta[0].qtdPostsRealizados;
+
+                    postagensRealizadas.innerHTML = totalPosts
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados: ${error.message}`);
+            });
+    }
 
 </script>
