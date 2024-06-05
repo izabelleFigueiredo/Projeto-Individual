@@ -1,6 +1,7 @@
 //Variável
 let questaoAtual = 0;
 let score = 0;
+let quizNum = 1; 
 
 showQuestion();
 
@@ -12,10 +13,6 @@ function showQuestion() {
     if (questions[questaoAtual]) {
         let q = questions[questaoAtual];
 
-        // let pct = Math.floor((questaoAtual / questions.length) * 100);
-        // document.querySelector('.progress--bar').style.width = `${pct}%`;
-        // document.querySelector('.scoreArea').style.display = 'none';
-        
         document.querySelector('.questionArea').style.display = 'block';
         document.querySelector('.question').innerHTML = `${questaoAtual+1}.  ${q.question}`;
 
@@ -37,7 +34,6 @@ function optionClickEvent(event) {
     let selectedOption = parseInt(event.target.getAttribute('data-op'));
     if (selectedOption === questions[questaoAtual].answer) {
         score += 2;
-        // document.getElementById('scoreHTML').textContent = score;
     }
     questaoAtual++;
     scoreHTML.innerHTML = score;
@@ -48,6 +44,11 @@ function optionClickEvent(event) {
 function finishQuiz() {
     document.querySelector('.Text').innerHTML = `<h1> Quiz Finalizado!</h1> 
         <h3> Sua Pontuação Final: ${score} pontos! </h3>`;
+
+        // chamando a função que irá inserir a pontuação no banco de dados
+        cadastrar();
+
+        
 
         // usuarioModel.inserirPontos(idUsuario, idQuiz, score)
         //     .then(
@@ -67,32 +68,49 @@ function finishQuiz() {
 
     document.querySelector('.scoreArea').style.display = 'block';
     document.querySelector('.questionArea').style.display = 'none';
-    // document.querySelector('.progress--bar').style.width = '100%';
 }
-
 function sair(){
     window.location = '../quiz.html'
 }
 
-// Coletar nome do usuário
-// b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+function cadastrar() {
+        var idUsuario = sessionStorage.ID_USUARIO;
+        var pontuacao = score;
+        var idQuiz = quizNum;
+// ${pontuacao}/${idUsuario}/${idQuiz}
+        fetch(`/aquarios/cadastrar`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idUsuario: idUsuario,
+                pontuacao: pontuacao,
+                idQuiz: idQuiz
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO cadastrar pontos()!")
 
+            if (resposta.ok) {
+            console.log(resposta);
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+                
+                
+            });
+        } else {
 
-// Automatizando sidebar
-// const body = document.querySelector("body"),
-//     sidebar = body.querySelector("nav");
-// sidebarToggle = body.querySelector(".sidebar-toggle");
+            console.log("Houve um erro ao tentar cadastrar os pontos!");
+            alert("Houve um erro ao tentar cadastrar os pontos!");
 
-// let getStatus = localStorage.getItem("status");
-// if (getStatus && getStatus === "close") {
-//     sidebar.classList.toggle("close");
-// }
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
 
-// sidebarToggle.addEventListener("click", () => {
-//     sidebar.classList.toggle("close");
-//     if (sidebar.classList.contains("close")) {
-//         localStorage.setItem("status", "close");
-//     } else {
-//         localStorage.setItem("status", "open");
-//     }
-// })
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+    return false;
+}

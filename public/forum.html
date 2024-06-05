@@ -121,11 +121,14 @@
 
     function funcCurtir(element) {
         const img = element.querySelector('img');
+        var curtido = 0;
         if (img.src.includes('curtir.png')) {
             img.src = "images/curtirDo.png";
+            curtido = 1;
         }
         else {
             img.src = "images/curtir.png"
+            curtido = 0;
         }
     }
 // WEB DATA VIZ - EM IMPLEMENTACAO --------------------------------------------------------------------------

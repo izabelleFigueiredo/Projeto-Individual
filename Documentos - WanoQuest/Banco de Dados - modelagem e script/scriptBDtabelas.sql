@@ -47,7 +47,7 @@ create table pontuacao (
 fkUsuario int,
 fkQuiz int,
 pontos int not null,
-dataPontuacao datetime,
+dataPontuacao datetime default now(),
 
 foreign key (fkUsuario) references usuario(idUsuario),
 foreign key (fkQuiz) references quiz(idQuiz),
@@ -57,7 +57,7 @@ primary key (fkUsuario, fkQuiz)
 create table curtir (
 fkUsuario int,
 fkPostagem int,
-dataCurtida date,
+dataCurtida datetime default now(),
 
 foreign key (fkUsuario) references usuario(idUsuario),
 foreign key (fkPostagem) references postagem(idPostagem)
@@ -87,11 +87,10 @@ insert into personagem (nome) values
 
 -- 
 insert into usuario (nome, nickname, email, senha, fkPersonagem) values ('Fernando Alves', 'Fern', 'fernando@outlook.com', md5('Ma1#'), 7);
-insert into tema values (default, 'Kuri e a Capital das Flores');
-insert into quiz values (default, 'Kuri e a Capital das Flores', 16, 1);
+insert into tema values (1, 'Kuri e a Capital das Flores');
+insert into quiz values (1, 'Kuri e a Capital das Flores', 16, 1);
 
--- insert into pontuacao values (1, 1, 8);
--- insert into curtir values (1, 1),
+
 
 select usuario.nome,
 		quiz.nome,
@@ -113,10 +112,6 @@ join usuario u on fkUsuario = idUsuario
 join artigo a on fkArtigo = idArtigo;        
 
 
--- teste de listagem postagens
-insert into postagem values
-(default, 'mensagem usuario', 1, 1);
-
 -- function listar postagens
 select idPostagem, mensagem, fkUsuario, fkTema,
 fkPersonagem, nickname,
@@ -134,8 +129,9 @@ SELECT * FROM personagem;
 SELECT * FROM usuario;
 select * from postagem;
 select * from tema;
+select * from quiz;
 select * from curtir;
-
+select * from pontuacao;
 
 -- select pro grafico do index
 select nickname from usuario where (
@@ -144,9 +140,7 @@ from curtir
 join usuario on idUsuario = fkUsuario 
 );
 
-desc pontuacao;
-insert into pontuacao (fkUsuario, fkQuiz, pontos, dataPontuacao)values
-(1, 1, 18)
+-- insert into pontuacao (fkUsuario, fkQuiz, pontos)values (1, 1, 18), (2, 1, 14);
 
 insert into curtir (fkUsuario, fkPostagem) values
 (1, 1),

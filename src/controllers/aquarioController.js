@@ -1,9 +1,9 @@
 var aquarioModel = require("../models/aquarioModel");
 
-function buscarAquariosPorEmpresa(req, res) {
+function buscarUsuario(req, res) {
   var idUsuario = req.params.idUsuario;
 
-  aquarioModel.buscarAquariosPorEmpresa(idUsuario).then((resultado) => {
+  aquarioModel.buscarUsuario(idUsuario).then((resultado) => {
     if (resultado.length > 0) {
       res.status(200).json(resultado);
     } else {
@@ -11,24 +11,26 @@ function buscarAquariosPorEmpresa(req, res) {
     }
   }).catch(function (erro) {
     console.log(erro);
-    console.log("Houve um erro ao buscar os aquarios: ", erro.sqlMessage);
+    console.log("Houve um erro ao buscar o usuário: ", erro.sqlMessage);
     res.status(500).json(erro.sqlMessage);
   });
 }
 
-
+// essa é a função de cadastrar os pontos do usuário ao final do quiz;
 function cadastrar(req, res) {
-  var descricao = req.body.descricao;
+  var pontuacao = req.body.pontuacao;
   var idUsuario = req.body.idUsuario;
+  var idQuiz = req.body.idQuiz;
 
-  if (descricao == undefined) {
-    res.status(400).send("descricao está undefined!");
+  if (pontuacao == undefined) {
+    res.status(400).send("pontuacao está undefined!");
   } else if (idUsuario == undefined) {
     res.status(400).send("idUsuario está undefined!");
-  } else {
-
-
-    aquarioModel.cadastrar(descricao, idUsuario)
+  } else if (idQuiz == undefined) {
+    res.status(400).send("idQuiz está undefined!");
+  }
+   else {
+    aquarioModel.cadastrar(pontuacao, idUsuario, idQuiz)
       .then((resultado) => {
         res.status(201).json(resultado);
       }
@@ -44,6 +46,6 @@ function cadastrar(req, res) {
 }
 
 module.exports = {
-  buscarAquariosPorEmpresa,
+  buscarUsuario,
   cadastrar
 }

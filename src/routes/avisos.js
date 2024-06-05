@@ -28,4 +28,9 @@ router.delete("/deletar/:idAviso", function (req, res) {
     avisoController.deletar(req, res);
 });
 
+
+router.post("/pontuar", function (req, res) {
+    avisoController.pontuar(req, res);
+});
+
 module.exports = router;
