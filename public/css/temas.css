@@ -122,27 +122,41 @@ a:hover{
 }
 .topicoTema:hover {
     transform: scale(1.05);
+    /* .front {
+        display: none;
+    }
+    .back {
+        display: flex;
+    } */
 }
 
 /* PÁGINA DE MENU DE QUIZZES */
 .front {
-    position: absolute;
-}
-.topicoTema .img {
+    position: relative;
+    z-index: 10;
     background-size: cover;
     background-repeat: no-repeat;
 }
-/* .back {
-    display: none;
-}
 .front:hover {
-    display: none;
+    z-index: 0;
 }
-.front:hover .back {
-    display: block;
+.back:hover {
+    z-index: 10;
+}
+
+/* .front .img {
+    z-index: 10;
+    background-size: cover;
+    background-repeat: no-repeat;
+} */
+ .back {
+    display: flex;
+    position: absolute;
     background-color: #EFEDEE;
     color: #E3BF23;
-}  */
+    opacity: 0;
+}
+
 
 /* FOOTER */
 footer{
@@ -151,12 +165,15 @@ footer{
 }
 footer img {
     width: 50px;
+    transition: 0.4s;
+}
+footer img:hover {
+    transform: scale(1.1);
 }
 footer .icones {
     display: flex;
     justify-content: center;
     gap: 20px;
-
 }
 .contato {
     display: flex;

@@ -151,7 +151,12 @@ limit 3;
 select sum(pontos) as totalPontos from pontuacao where fkUsuario = 3;
 
 -- select pra página do usuário - quizzes realizados
+select count(fkUsuario) as qtdQuizRealizado from pontuacao where fkUsuario = 3;
+
 -- select pra página do usuário - suas postagens
+select count(fkUsuario) as qtdPostsRealizados from postagem where fkUsuario = 2;
+
+
 -- select pra página do usuário - curtidas recebidas
 
 

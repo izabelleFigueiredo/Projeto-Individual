@@ -149,12 +149,15 @@ footer{
 }
 footer img {
     width: 50px;
+    transition: 0.4s;
+}
+footer img:hover {
+    transform: scale(1.1);
 }
 footer .icones {
     display: flex;
     justify-content: center;
     gap: 20px;
-
 }
 .contato {
     display: flex;

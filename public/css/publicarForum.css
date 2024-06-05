@@ -107,6 +107,7 @@ a:hover {
 }
 button {
     border-style: none;
+    transition: 0.3s;
 }
 .botao { /* class de cada botão */
     padding: 10px 70px;
@@ -115,9 +116,10 @@ button {
     color: #fff;
 }
 button:hover {
-    transition: 0.3s;
     background-color: #fff;
     color: #E3BF23;
+    transform: translateY(-6px);
+    border: 1px solid #E3BF23;
 }
 .recados {
     display: flex;
@@ -148,9 +150,17 @@ button:hover {
     background-color: #5681A6;
     align-items: center;
     border-radius: 40px;
+    transition: 0.4s;
+    box-shadow: 0px 0px 20px 4px #F7BECD;
+}
+.lemb:hover {
+    transform: scale(1.05);
 }
 .lemb img {
     width: 10vh;
     height: 10vh;
-    
+}
+input {
+    box-shadow: 0px 0px 20px 1px #F7BECD;
+    border: 1px solid #E3BF23;
 }
