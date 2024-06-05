@@ -31,84 +31,18 @@
 
     <div class="comentarios" id="comentarios">
         <div id="msgNada"></div>
-        <!-- <div class="comm">
-            <div class="infoUser">
-                <div class="usuario">
-                    <span id="imgPersonagem" class="foto"> <img src="images/personagens/3.jpg"> </span>
-                    <span id="nickname" class="nickname"> nickname </span>
-                </div>
-                <div class="curtir">
-                    <span id="curtida" onclick="funcCurtir(this)"> <img src="images/curtir.png"></span>
-                </div>
-            </div>
-            <div class="tituloTopico">Tópico: <span id="topico">  Kuri e a Capital das Flores</span> </div>
-            <hr>
-            <div class="mensagem"><span id="mensagem">Curabitur sit amet libero suscipit, convallis ipsum eget,
-                    tristique urna. Nulla sit amet nulla ac quam dignissim suscipit sit amet a risus. Curabitur vel
-                    augue malesuada, pellentesque diam et, euismod massa. </span></div>
-        </div>
-        <div class="comm">
-            <div class="infoUser">
-                <div class="usuario">
-                    <span id="imgPersonagem" class="foto"> <img src="images/personagens/3.jpg"> </span>
-                    <span id="nickname" class="nickname"> nickname </span>
-                </div>
-                <div class="curtir">
-                    <span id="curtida" onclick="funcCurtir(this)"> <img src="images/curtir.png"></span>
-                </div>
-            </div>
-            <div class="tituloTopico">Tópico: <span id="topico">  Kuri e a Capital das Flores</span> </div>
-            <hr>
-            <div class="mensagem"><span id="mensagem">Curabitur sit amet libero suscipit, convallis ipsum eget,
-                    tristique urna. Nulla sit amet nulla ac quam dignissim suscipit sit amet a risus. Curabitur vel
-                    augue malesuada, pellentesque diam et, euismod massa. </span></div>
-        </div>
-        <div class="comm">
-            <div class="infoUser">
-                <div class="usuario">
-                    <span id="imgPersonagem" class="foto"> <img src="images/personagens/3.jpg"> </span>
-                    <span id="nickname" class="nickname"> nickname </span>
-                </div>
-                <div class="curtir">
-                    <span id="curtida" onclick="funcCurtir(this)"> <img src="images/curtir.png"></span>
-                </div>
-            </div>
-            <div class="tituloTopico">Tópico: <span id="topico"> Kuri e a Capital das Flores</span> </div>
-            <hr>
-            <div class="mensagem"><span id="mensagem">Curabitur sit amet libero suscipit, convallis ipsum eget,
-                    tristique urna. Nulla sit amet nulla ac quam dignissim suscipit sit amet a risus. Curabitur vel
-                    augue malesuada, pellentesque diam et, euismod massa. </span></div>
-        </div>
-        <div class="comm">
-            <div class="infoUser">
-                <div class="usuario">
-                    <span id="imgPersonagem" class="foto"> <img src="images/personagens/3.jpg"> </span>
-                    <span id="nickname" class="nickname"> nickname </span>
-                </div>
-                <div class="curtir">
-                    <span id="curtida" onclick="funcCurtir(this)"> <img src="images/curtir.png"></span>
-                </div>
-            </div>
-            <div class="tituloTopico">Tópico: <span id="topico"> Kuri e a Capital das Flores</span> </div>
-            <hr>
-            <div class="mensagem"><span id="mensagem">Curabitur sit amet libero suscipit, convallis ipsum eget,
-                    tristique urna. Nulla sit amet nulla ac quam dignissim suscipit sit amet a risus. Curabitur vel
-                    augue malesuada, pellentesque diam et, euismod massa. </span></div>
-        </div> -->
     </div>
 </body>
 <footer>
     <div class="contato">
         <h3>Contato</h3>
         <div class="icones">
-            <a href="https://github.com/izabelleFigueiredo/Projeto-WanoQuest"><img src="images/icon/github.png"
-                    alt="github"></a>
+            <a href="https://github.com/izabelleFigueiredo/Projeto-WanoQuest"><img src="images/icon/github.png" alt="github"></a>
             <a href="mailto:izabelle.figueiredo@sptech.school"><img src="images/icon/email.png" alt="email"></a>
             <a href="https://www.instagram.com/izafrefire/"><img src="images/icon/instagram.png" alt="instagram"></a>
         </div>
     </div>
 </footer>
-
 </html>
 <script>
 
@@ -131,13 +65,11 @@
             curtido = 0;
         }
     }
-// WEB DATA VIZ - EM IMPLEMENTACAO --------------------------------------------------------------------------
     function atualizarFeed() {
         fetch("/avisos/listar").then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
                     var feed = document.getElementById("comentarios");
-                    // var mensagem = document.createElement("div")
                     msgNada.innerHTML = "Nenhum resultado encontrado."
                     feed.appendChild(mensagem);
                     throw "Nenhum resultado encontrado!!";
@@ -151,7 +83,6 @@
                         var publicacao = resposta[i];
 
                         // atualizando para os valores do usuario
-
                        var fkPersonagem = resposta[i].fkPersonagem;
                        var nickname = resposta[i].nickname; 
                        var titulo = resposta[i].titulo;
@@ -171,50 +102,6 @@
             <hr>
             <div class="mensagem"><span id="mensagem"> ${mensagem} </span></div>
         </div>`
-                        
-
-                        // // criando e manipulando elementos do HTML via JavaScript
-                        // var divPublicacao = document.createElement("div");
-                        // var spanID = document.createElement("span");
-                        // var spanTitulo = document.createElement("span");
-                        // var spanNome = document.createElement("span");
-                        // var divDescricao = document.createElement("div");
-                        // var divButtons = document.createElement("div");
-                        // // var btnEditar = document.createElement("button");
-                        // // var btnDeletar = document.createElement("button");
-
-
-                        // // spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
-                        // spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
-                        // spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
-                        // divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
-                        // // btnEditar.innerHTML = "Editar";
-                        // // btnDeletar.innerHTML = "Deletar";
-
-                        // divPublicacao.className = "comm";
-                        // // spanTitulo.id = "inputNumero" + publicacao.idAviso;
-                        // spanNome.className = "nickname";
-                        // spanTitulo.className = "tituloTopico";
-                        // divDescricao.className = "mensagem";
-
-                        // divButtons.className = "curtir"
-
-                        // // btnEditar.className = "publicacao-btn-editar"
-                        // // btnEditar.id = "btnEditar" + publicacao.idAviso;
-                        // // btnEditar.setAttribute("onclick", `editar(${publicacao.idAviso})`);
-
-                        // // btnDeletar.className = "publicacao-btn-editar"
-                        // // btnDeletar.id = "btnDeletar" + publicacao.idAviso;
-                        // // btnDeletar.setAttribute("onclick", `deletar(${publicacao.idAviso})`);
-
-                        // // divPublicacao.appendChild(spanID);
-                        // divPublicacao.appendChild(spanNome);
-                        // divPublicacao.appendChild(spanTitulo);
-                        // divPublicacao.appendChild(divDescricao);
-                        // divPublicacao.appendChild(divButtons);
-                        // // divButtons.appendChild(btnEditar);
-                        // // divButtons.appendChild(btnDeletar);
-                        // feed.appendChild(divPublicacao);
                     }
                 });
             } else {

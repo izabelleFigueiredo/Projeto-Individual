@@ -1,3 +1,6 @@
+// esse arquivo contém o json de todas as questões, suas opções e as respostas corretas em cada answer, 
+// que serão acessados e exibidos através de um for.
+
 let questions = [
     {
         question: 'Por que a terra de Kuri não é fértil?',

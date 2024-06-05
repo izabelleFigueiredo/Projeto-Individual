@@ -90,7 +90,6 @@
             alert('Escreva uma mensagem antes de publicar algo!');
         }
         else {
-            // WEB DATA VIZ - EM IMPLEMENTACAO --------------------------------------------------------------
             var idUsuario = sessionStorage.ID_USUARIO;
 
             var corpo = {
@@ -119,9 +118,7 @@
             }).catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
             });
-
             return false;
-
         }
     }
 

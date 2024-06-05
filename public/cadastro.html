@@ -16,19 +16,19 @@
                 <div class="cadastro">
                     <h2>Crie uma nova conta</h2>
                     <div class="inputs">
-                        <input class="inpt" type="text" id="inpNome" placeholder="Insira seu nome" />
+                        <input maxlength="45" class="inpt" type="text" id="inpNome" placeholder="Insira seu nome" />
                         <span id="alertNome" class="msgAlerta"></span>
 
                         <input maxlength="15" class="inpt" type="text" id="inpNickname" placeholder="Insira seu nickname" />
                         <span id="alertNickname" class="msgAlerta"></span>
 
-                        <input class="inpt" type="email" id="inpEmail" placeholder="Insira seu email" />
+                        <input maxlength="45" class="inpt" type="email" id="inpEmail" placeholder="Insira seu email" />
                         <span id="alertEmail" class="msgAlerta"></span>
 
-                        <input class="inpt" type="password" id="inpSenha" placeholder="Crie sua senha" />
+                        <input maxlength="255" class="inpt" type="password" id="inpSenha" placeholder="Crie sua senha" />
                         <span id="alertSenha" class="msgAlerta"></span>
 
-                        <input class="inpt" type="password" id="inpConfirmSenha" placeholder="Confirme sua senha" />
+                        <input maxlength="255" class="inpt" type="password" id="inpConfirmSenha" placeholder="Confirme sua senha" />
                         <span id="alertConfirmSenha" class="msgAlerta"></span>
 
                         <select class="inpt" id="slcPersonagem">
@@ -111,6 +111,7 @@
             }
         } else {
 
+            // Verificacação de senha forte: letras maiúsculas e minúsculas, números e caracteres especiais
             var caracMai = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
             var validMai = 0;
             var caracMin = 'abcdefghijklmnopqrstuvwxyz';
@@ -158,7 +159,7 @@
                 }
             }
 
-            else {
+            else { // passou em todas as validações!!
 
                 // Enviando o valor da nova input
                 fetch("/usuarios/cadastrar", {

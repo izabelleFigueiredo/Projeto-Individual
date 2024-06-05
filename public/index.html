@@ -9,7 +9,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Home | WanoQuest</title>
 </head>
-<!-- onload="atualizarGrafico() -->
 
 <body onload="obterDadosGrafico()">
     <header>
@@ -88,7 +87,7 @@
                     <!-- <h1>Title</h1>  -->
                     <h5>Aqui, exploramos como essa obra pode provocar reflexões profundas sobre situações e desafios
                         contemporâneos que, assim
-                        como em One Piece exigem coragem e solidariedade para serem enfrentados. </h5>
+                        como em One Piece, exigem coragem e solidariedade para serem enfrentados. </h5>
                 </div>
                 <div class="dir2">
                     <img src="images/luffy.png" alt="">
@@ -183,12 +182,9 @@
     //         }
     //     });
 
-    // INSERINDO DADOS NOS GRÁFICOS
+    // INSERINDO DADOS NO GRÁFICO DE USUÁRIOS COM MAIS PONTOS
     function obterDadosGrafico() {
         let idUsuario = sessionStorage.ID_USUARIO
-        // if (proximaAtualizacao != undefined) {
-        //     clearTimeout(proximaAtualizacao);
-        // }
 
         fetch(`/medidas/ultimas/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
@@ -207,9 +203,8 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
     }
-    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-    // Configura o gráfico (cores, tipo, etc) e materializa-o na página
 
+    // a função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico, Configura o gráfico (cores, tipo, etc) e materializa-o na página
     function plotarGrafico(resposta) {
         console.log('iniciando plotagem do gráfico...');
 

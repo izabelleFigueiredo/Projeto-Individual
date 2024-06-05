@@ -9,6 +9,8 @@ showQuestion();
 document.querySelector('.scoreArea button').addEventListener('click');
 
 //Funções
+
+// após o click ser ativado, a questão exibida na tela é alterada através dessa função
 function showQuestion() {
     if (questions[questaoAtual]) {
         let q = questions[questaoAtual];
@@ -30,6 +32,7 @@ function showQuestion() {
     }
 }
 
+// essa função consulta o arquivo questions.js através do 'click' em uma das opções e chama a função showQuestion()
 function optionClickEvent(event) {
     let selectedOption = parseInt(event.target.getAttribute('data-op'));
     if (selectedOption === questions[questaoAtual].answer) {
@@ -48,24 +51,6 @@ function finishQuiz() {
         // chamando a função que irá inserir a pontuação no banco de dados
         cadastrar();
 
-        
-
-        // usuarioModel.inserirPontos(idUsuario, idQuiz, score)
-        //     .then(
-        //         function (resultado) {
-        //             res.json(resultado);
-        //         }
-        //     ).catch(
-        //         function (erro) {
-        //             console.log(erro);
-        //             console.log(
-        //                 "\nHouve um erro ao realizar o insert! Erro: ",
-        //                 erro.sqlMessage
-        //             );
-        //             res.status(500).json(erro.sqlMessage);
-        //         }
-        //     );
-
     document.querySelector('.scoreArea').style.display = 'block';
     document.querySelector('.questionArea').style.display = 'none';
 }
@@ -77,7 +62,7 @@ function cadastrar() {
         var idUsuario = sessionStorage.ID_USUARIO;
         var pontuacao = score;
         var idQuiz = quizNum;
-// ${pontuacao}/${idUsuario}/${idQuiz}
+
         fetch(`/aquarios/cadastrar`, {
             method: "POST",
             headers: {
@@ -96,11 +81,8 @@ function cadastrar() {
             resposta.json().then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
-                
-                
             });
         } else {
-
             console.log("Houve um erro ao tentar cadastrar os pontos!");
             alert("Houve um erro ao tentar cadastrar os pontos!");
 
