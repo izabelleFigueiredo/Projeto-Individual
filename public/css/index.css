@@ -18,16 +18,21 @@
 html {
     scroll-behavior: smooth;
 }
-html::-webkit-scrollbar {       /* geral */
+
+html::-webkit-scrollbar {
+    /* geral */
     width: 8px;
     border-radius: 5px;
 }
-html::-webkit-scrollbar-thumb {      /* a barrinha móvel em si */
+
+html::-webkit-scrollbar-thumb {
+    /* a barrinha móvel em si */
     background-color: #222;
     border-radius: 5px;
 }
 
-html::-webkit-scrollbar-track {     /* espaco total da barra, o fundo */
+html::-webkit-scrollbar-track {
+    /* espaco total da barra, o fundo */
     background-color: #EFEDEE;
     border-radius: 5px;
 }
@@ -45,7 +50,8 @@ header {
     top: 0;
     left: 0;
     padding: 20px 10%;
-    z-index: 10; /* pra imagem nao sobrepor o header */
+    z-index: 10;
+    /* pra imagem nao sobrepor o header */
 
 }
 
@@ -64,12 +70,17 @@ header {
     text-decoration: none;
     color: #fff;
 }
+
 /* pra fazer o efeito de saltar pra frente */
-.imagens img:hover, .icones img:hover {
+.imagens img:hover,
+.icones img:hover {
     transform: scale(1.2);
 }
-.imagens img, .icones img {
-    transition: 0.4s; /* por o transition fora do hover pra animacao de volta também ser suave!*/
+
+.imagens img,
+.icones img {
+    transition: 0.4s;
+    /* por o transition fora do hover pra animacao de volta também ser suave!*/
 }
 
 a:hover {
@@ -81,6 +92,7 @@ a:hover {
 .container {
     width: 1240px;
 }
+
 /* .inicio .container {
     width: 1200px;;
 } */
@@ -101,13 +113,17 @@ a:hover {
     width: 450px;
     animation: moveUpDown 3s ease-in-out infinite;
     position: relative;
-    z-index: 1; /* pra imagem nao sobrepor o header (quanto maior, mais camada acima ele fica) */
+    z-index: 1;
+    /* pra imagem nao sobrepor o header (quanto maior, mais camada acima ele fica) */
 }
 
 @keyframes moveUpDown {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-30px);
     }
@@ -157,6 +173,10 @@ a:hover {
     width: 60px;
 }
 
+.imgONU:hover {
+    cursor: pointer;
+}
+
 /* SEGUNDA SEÇÃO */
 .divPlacares {
     display: flex;
@@ -182,6 +202,7 @@ a:hover {
     gap: 200px;
     padding-top: 100px;
 }
+
 .graficoE {
     display: flex;
     flex-direction: column;
@@ -237,6 +258,16 @@ a:hover {
     text-align: start;
 }
 
+.esq1 img,
+.dir2 img {
+    transition: .4s;
+}
+
+.esq1 img:hover,
+.dir2 img:hover {
+    transform: scale(1.2);
+}
+
 /* SEÇÃO SOBRE MIM */
 .divSobreMim {
     display: flex;
@@ -270,27 +301,38 @@ a:hover {
     font-size: 22px;
     line-height: 26px;
 }
-.textos h5{
+
+.textos h5 {
     padding-bottom: 40px;
 }
 
+.txtSB {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
 /* FOOTER */
-footer{
+footer {
     height: 250px;
     background-color: #222;
 }
+
 footer img {
     width: 50px;
     transition: 0.4s;
 }
+
 footer img:hover {
     transform: scale(1.1);
 }
+
 footer .icones {
     display: flex;
     justify-content: center;
     gap: 20px;
 }
+
 .contato {
     display: flex;
     justify-content: center;
