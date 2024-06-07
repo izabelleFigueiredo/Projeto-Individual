@@ -10,7 +10,7 @@
     <title>Home | WanoQuest</title>
 </head>
 
-<body onload="obterDadosGrafico()">
+<body onload="obterDadosGrafico(), obterDadosGraficoCurtidas()">
     <header>
         <div class="logo">
             <a href="index.html#inicio"><img src="images/logo.svg" alt="logo"></a>
@@ -25,6 +25,7 @@
             </div>
         </div>
     </header>
+
     <div class="inicio" id="inicio">
         <div class="container">
             <div class="banner">
@@ -33,10 +34,7 @@
                 </div>
                 <div class="dir">
                     <h1>WanoQuest</h1>
-                    <h3>Pontue, publique e explore como one piece inspira discussões sobre temas essenciais para um
-                        mundo
-                        mais
-                        sustentável</h3>
+                    <h3>Pontue, publique e explore como one piece inspira discussões sobre temas essenciais para um mundo mais sustentável</h3>
                     <div class="imagens">
                         <img class="imgOP" src="images/logoOP.png" alt="One Piece logo">
                         <img class="imgLogo" src="images/logo.svg" alt="WanoQuesta logo">
@@ -178,6 +176,8 @@
     //         }
     //     });
 
+    // GRÁFICO DE USUÁRIOS COM MAIS PONTOS --------------------------------------------------------------------------------------------------------
+
     // INSERINDO DADOS NO GRÁFICO DE USUÁRIOS COM MAIS PONTOS
     function obterDadosGrafico() {
         let idUsuario = sessionStorage.ID_USUARIO
@@ -285,5 +285,117 @@
             config
         );
     }
+    // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    // GRÁFICO DE USUÁRIOS COM MAIS CURTIDAS -------------------------------------------------------------------------------------------------------------------------------
+    // INSERINDO DADOS NO GRÁFICO DE USUÁRIOS COM MAIS CURTIDAS
+    function obterDadosGraficoCurtidas() {
+        let idUsuario = sessionStorage.ID_USUARIO
+
+        fetch(`/medidas/ultimasCurtidas/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGraficoCurtidas(resposta, idUsuario);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    // a função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico, Configura o gráfico (cores, tipo, etc) e materializa-o na página
+    function plotarGraficoCurtidas(resposta) {
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        if (resposta.length == 1) {
+            var usuarioTop1 = resposta[0].nickname;
+            var usuarioTop2 = 'Não Registrado';
+            var usuarioTop3 = 'Não Registrado';
+            var usuarioTop1Pts = resposta[0].qtdCurtidas;
+            var usuarioTop2Pts = 0;
+            var usuarioTop3Pts = 0;
+        }
+        else if (resposta.length == 2) {
+            var usuarioTop1 = resposta[0].nickname;
+            var usuarioTop2 = resposta[1].nickname;
+            var usuarioTop3 = 'Não Registrado';
+            var usuarioTop1Pts = resposta[0].qtdCurtidas;
+            var usuarioTop2Pts = resposta[1].qtdCurtidas;
+            var usuarioTop3Pts = 0;
+        }
+        else {
+            var usuarioTop1 = resposta[0].nickname;
+            var usuarioTop2 = resposta[1].nickname;
+            var usuarioTop3 = resposta[2].nickname;
+            var usuarioTop1Pts = resposta[0].qtdCurtidas;
+            var usuarioTop2Pts = resposta[1].qtdCurtidas;
+            var usuarioTop3Pts = resposta[2].qtdCurtidas;
+        }
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: `${usuarioTop1}`,
+                data: [`${usuarioTop1Pts}`],
+                fill: false,
+            },
+            {
+                label: `${usuarioTop2}`,
+                data: [`${usuarioTop2Pts}`],
+                fill: false,
+            },
+            {
+                label: `${usuarioTop3}`,
+                data: [`${usuarioTop3Pts}`],
+                fill: false,
+            }
+            ]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        labels.push('Usuários');
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            dados.datasets[i].data.push(registro.nickname);
+            dados.datasets[i].data.push(registro.qtdCurtidas);
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'bar',
+            data: dados,
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`graficoCurtidas`),
+            config
+        );
+    }
+    
+    // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 </script>

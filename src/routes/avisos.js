@@ -33,4 +33,14 @@ router.post("/pontuar", function (req, res) {
     avisoController.pontuar(req, res);
 });
 
+router.post("/curtir/:idUsuario/:idPostagem", function (req, res) {
+    avisoController.curtir(req, res);
+});
+
+router.delete("/descurtir/:idUsuario/:idPostagem", function (req, res) {
+    avisoController.descurtir(req, res);
+});
+
+
+
 module.exports = router;

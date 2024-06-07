@@ -18,6 +18,23 @@ function buscarUltimasMedidas(req, res) {
     });
 }
 
+function buscarUltimasMedidasCurtidas(req, res) {
+
+    var idUsuario = req.params.idUsuario;
+
+    medidaModel.buscarUltimasMedidasCurtidas(idUsuario).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 //essa funcao será utilizada pra fazer o gráfico de usuários com mais curtidas em posts!
 function buscarMedidasEmTempoReal(req, res) {
     var idAquario = req.params.idAquario;
@@ -89,10 +106,30 @@ function obterDadosUserPosts(req, res) {
     });
 }
 
+function obterDadosUserCurtidas(req, res) {
+
+    var idUsuario = req.params.idUsuario;
+    var idPostagem = req.params.idPostagem;
+
+    medidaModel.obterDadosUserCurtidas(idUsuario, idPostagem).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as curtidas recebidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
     obterDadosUserPontuacao,
     obterDadosUserQuizzes,
-    obterDadosUserPosts
+    obterDadosUserPosts,
+    obterDadosUserCurtidas,
+    buscarUltimasMedidasCurtidas
 }

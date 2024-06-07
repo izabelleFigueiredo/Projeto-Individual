@@ -57,7 +57,7 @@ function listarPorUsuario(idUsuario) {
 }
 
 function publicar(idTema, mensagem, idUsuario) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente.")
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. function publicar()")
     var instrucaoSql = `
         INSERT INTO postagem VALUES (default, '${mensagem}', ${idUsuario}, '${idTema}');
     `;
@@ -83,11 +83,31 @@ function deletar(idAviso) {
     return database.executar(instrucaoSql);
 }
 
+function curtir(idUsuario, idPostagem) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function curtir() user , postagem", idUsuario, idPostagem);
+    var instrucaoSql = `
+    insert into curtir values (${idUsuario}, ${idPostagem}, default);
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function descurtir(idUsuario, idPostagem) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function descurtir()", idUsuario, idPostagem);
+    var instrucaoSql = `
+        DELETE FROM curtir WHERE fkUsuario = ${idUsuario} and fkPostagem = ${idPostagem};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     listar,
     listarPorUsuario,
     pesquisarDescricao,
     publicar,
     editar,
-    deletar
+    deletar,
+    curtir,
+    descurtir
 }

@@ -133,11 +133,19 @@ select * from quiz;
 select * from curtir;
 select * from pontuacao;
 
+
+-- insert pro curtir postagem 
+insert into curtir values
+(1, 2, default);
+
+-- delete pro descurtir postagem
+ DELETE FROM curtir WHERE fkUsuario = 3 and fkPostagem =3;
+
 -- select pro grafico do index - curtidas
-select nickname, count(idUsuario)
+select ifnull(nickname, 'Nenhum Registro') as nickname, ifnull(count(idUsuario), 0) as qtdCurtidas
 from curtir
 join usuario on idUsuario = fkUsuario 
-group by nickname
+group by nickname order by qtdCurtidas desc
 ;
 
 -- select pro grafico do index - pontuacao
@@ -156,9 +164,8 @@ select count(fkUsuario) as qtdQuizRealizado from pontuacao where fkUsuario = 3;
 -- select pra página do usuário - suas postagens
 select count(fkUsuario) as qtdPostsRealizados from postagem where fkUsuario = 2;
 
-
 -- select pra página do usuário - curtidas recebidas
-
+select count(fkPostagem) as qtdCurtidasRecebidas from curtir where fkUsuario = 2;
 
 -- insert into pontuacao (fkUsuario, fkQuiz, pontos)values (1, 1, 18), (2, 1, 14);
 

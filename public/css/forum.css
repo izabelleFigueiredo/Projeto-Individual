@@ -122,7 +122,13 @@ button:hover {
 .comentarios img {
     width: 30px;
     border-radius: 100%;
+    transition: .4s;
 }
+.iconCurtir img:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
 .comentarios .foto img {
     width: 40px;
 }

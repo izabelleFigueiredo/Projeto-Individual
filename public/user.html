@@ -8,7 +8,7 @@
     <title>Minha Área | WanoQuest</title>
 </head>
 
-<body onload="obterDadosUserPontuacao(), obterDadosUserQuizzes(), obterDadosUserPosts()">
+<body onload="obterDadosUserPontuacao(), obterDadosUserQuizzes(), obterDadosUserPosts(), obterDadosUserCurtidas()">
     <header>
         <div class="logo">
             <a href="index.html"><img src="images/logo.svg" alt="logo"> </a>
@@ -125,6 +125,25 @@
                     var totalPosts = resposta[0].qtdPostsRealizados;
 
                     postagensRealizadas.innerHTML = totalPosts
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados: ${error.message}`);
+            });
+    }
+
+    function obterDadosUserCurtidas() {
+        fetch(`/medidas/userCurtidas/${idUsuario}/${idPostagem}`).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    // resposta.reverse();
+                    var totalCurtidas = resposta[0].qtdCurtidasRecebidas;
+
+                    curtidasRecebidas.innerHTML = totalCurtidas
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');

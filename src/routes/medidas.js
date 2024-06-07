@@ -3,6 +3,10 @@ var router = express.Router();
 
 var medidaController = require("../controllers/medidaController");
 
+router.get("/tempo-real/:idAquario", function (req, res) {
+    medidaController.buscarMedidasEmTempoReal(req, res);
+})
+
 //ROTAS DE GRÁFICOS - index.html
 
 // rota utilizada pra gerar o gráfico de top 3 usuários com mais pontos
@@ -10,9 +14,11 @@ router.get("/ultimas/:idUsuario", function (req, res) {
     medidaController.buscarUltimasMedidas(req, res);
 });
 
-router.get("/tempo-real/:idAquario", function (req, res) {
-    medidaController.buscarMedidasEmTempoReal(req, res);
-})
+// rota utilizada pra gerar o gráfico de top 3 usuários com mais curtidas
+router.get("/ultimasCurtidas/:idUsuario", function (req, res) {
+    medidaController.buscarUltimasMedidasCurtidas(req, res);
+});
+
 
 //ROTAS DE DADOS DO USUÁRIO - user.html
 
@@ -29,6 +35,11 @@ router.get("/userQuiz/:idUsuario", function (req, res) {
 // rota utilizada pra obter o total de postagens realizadas pelo usuário
 router.get("/userPost/:idUsuario", function (req, res) {
     medidaController.obterDadosUserPosts(req, res);
+})
+
+// rota utilizada pra obter o total de curtidas recebidas pelo usuário
+router.get("/userCurtidas/:idUsuario/:idPostagem", function (req, res) {
+    medidaController.obterDadosUserCurtidas(req, res);
 })
 
 

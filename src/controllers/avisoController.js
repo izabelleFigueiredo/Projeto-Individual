@@ -127,11 +127,52 @@ function deletar(req, res) {
         );
 }
 
+function curtir(req, res) {
+    var idPostagem = req.body.idPostagem;
+    var idUsuario = req.body.idUsuario;
+
+        avisoModel.curtir(idUsuario, idPostagem)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            )
+            .catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("Houve um erro ao realizar a curtida: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+    function descurtir(req, res) {
+        var idPostagem = req.body.idPostagem;
+        var idUsuario = req.body.idUsuario;
+    
+            avisoModel.descurtir(idUsuario, idPostagem)
+                .then(
+                    function (resultado) {
+                        res.json(resultado);
+                    }
+                )
+                .catch(
+                    function (erro) {
+                        console.log(erro);
+                        console.log("Houve um erro ao realizar a descurtida: ", erro.sqlMessage);
+                        res.status(500).json(erro.sqlMessage);
+                    }
+                );
+        }
+
 module.exports = {
-    listar,
     listarPorUsuario,
     pesquisarmensagem,
-    publicar,
     editar,
-    deletar
+    deletar,
+    publicar,
+    listar,
+    curtir,
+    descurtir
+
 }

@@ -37,14 +37,18 @@
     <div class="contato">
         <h3>Contato</h3>
         <div class="icones">
-            <a href="https://github.com/izabelleFigueiredo/Projeto-WanoQuest"><img src="images/icon/github.png" alt="github"></a>
+            <a href="https://github.com/izabelleFigueiredo/Projeto-WanoQuest"><img src="images/icon/github.png"
+                    alt="github"></a>
             <a href="mailto:izabelle.figueiredo@sptech.school"><img src="images/icon/email.png" alt="email"></a>
             <a href="https://www.instagram.com/izafrefire/"><img src="images/icon/instagram.png" alt="instagram"></a>
         </div>
     </div>
 </footer>
+
 </html>
 <script>
+     var idUsuario;
+     var idPostagem;
 
     nickname.innerHTML = sessionStorage.NICKNAME_USUARIO;
     imgPersonagem.innerHTML = `<img src='images/personagens/${sessionStorage.PERSONAGEM_USUARIO}.jpg' alt="foto perfil">`
@@ -59,10 +63,12 @@
         if (img.src.includes('curtir.png')) {
             img.src = "images/curtirDo.png";
             curtido = 1;
+            curtir();
         }
         else {
             img.src = "images/curtir.png"
             curtido = 0;
+            descurtir();
         }
     }
     function atualizarFeed() {
@@ -83,19 +89,21 @@
                         var publicacao = resposta[i];
 
                         // atualizando para os valores do usuario
-                       var fkPersonagem = resposta[i].fkPersonagem;
-                       var nickname = resposta[i].nickname; 
-                       var titulo = resposta[i].titulo;
-                       var mensagem = resposta[i].mensagem;
+                        var idUsuario = resposta[i].fkUsuario
+                        var idPostagem = resposta[i].idPostagem;
+                        var fkPersonagem = resposta[i].fkPersonagem;
+                        var nickname = resposta[i].nickname;
+                        var titulo = resposta[i].titulo;
+                        var mensagem = resposta[i].mensagem;
 
-                    comentarios.innerHTML += `<div class="comm">
-            <div class="infoUser">
-                <div class="usuario">
-                    <span id="imgPersonagem" class="foto"> <img src="images/personagens/${publicacao.fkPersonagem}.jpg"> </span>
+                        comentarios.innerHTML += `<div class="comm">
+            <div class="infoUser" id= ${idPostagem}>
+                <div class="usuario" id=${idUsuario}>
+                    <span id="imgPersonagem" class="foto"> <img src="images/personagens/${fkPersonagem}.jpg"> </span>
                     <span id="nickname" class="nickname">${nickname}</span>
                 </div>
                 <div class="curtir">
-                    <span id="curtida" onclick="funcCurtir(this)"> <img src="images/curtir.png"></span>
+                    <span id="curtida" class="iconCurtir" onclick="pegarID(this); funcCurtir(this)"> <img src="images/curtir.png"></span>
                 </div>
             </div>
             <div class="tituloTopico">Tópico: <span id="topico">${titulo}</span> </div>
@@ -110,5 +118,88 @@
         }).catch(function (resposta) {
             console.error(resposta);
         });
+    }
+    function pegarID(element) {
+
+        // essa funcionalidade DOM (Document Object Mode) serve pra encontrar o elemento pai mais próximo que corresponda a um
+        // seletor CSS específico, passado como parametro.
+        var pegarIdPostagem = element.closest('.infoUser');
+
+        //  o querySelector retorna o primeiro elemento dentro do documento que corresponde a um seletor CSS especificado.
+        // aqui, ele busca dentro da resposta obtida pela funcao anterior, pelo .usuário, que é onde está definido o segundo id que estou buscando.
+        var pegarIdUsuario = pegarIdPostagem.querySelector('.usuario');
+       
+        // depois, passo os valores do id obtidos para a variável que irá comunicar com o banco de dados na funcao curtir() ou descurtir()
+            idPostagem = pegarIdPostagem.id; 
+            console.log('ID da postagem:', idPostagem);
+       
+            idUsuario = pegarIdUsuario.id; 
+            console.log('ID da postagem:', idUsuario);
+    }
+
+
+    function curtir() {
+        // retomando os valores globais obtidos de cada id necessário pra curtir um post!
+
+        idUsuario;
+        idPostagem;
+
+        console.log('enviando os dados: ', idUsuario, idPostagem)
+        fetch(`/avisos/curtir/:${idUsuario}/:${idPostagem}`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+                body: JSON.stringify({
+                    idUsuario: idUsuario,
+                    idPostagem: idPostagem,
+                })
+            // body: JSON.stringify(corpo)
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Curtida realizada com sucesso pelo usuario de ID: " + idUsuario + "!");
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a curtida! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+        return false;
+    }
+    function descurtir() {
+        var idUsuario = sessionStorage.ID_USUARIO;
+        idPostagem;
+        console.log('enviando os dados: ', idUsuario, idPostagem)
+        fetch(`/avisos/descurtir/:${idUsuario}/:${idPostagem}`, {
+            method: "delete",
+            headers: {
+                "Content-Type": "application/json"
+            },
+                body: JSON.stringify({
+                    idUsuario: idUsuario,
+                    idPostagem: idPostagem,
+                })
+        }).then(function (resposta) {
+
+            // olhar o : do index e do controller com console.logv
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Curtida removida com sucesso pelo usuario de ID: " + idUsuario + "!");
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a curtida! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+        return false;
+
     }
 </script>
