@@ -114,6 +114,7 @@ a:hover {
     animation: moveUpDown 3s ease-in-out infinite;
     position: relative;
     z-index: 1;
+    filter: drop-shadow(5px 5px 5px #F7BECD);
     /* pra imagem nao sobrepor o header (quanto maior, mais camada acima ele fica) */
 }
 

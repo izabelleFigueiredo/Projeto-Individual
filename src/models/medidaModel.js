@@ -15,7 +15,7 @@ function buscarUltimasMedidas(idUsuario) {
     var instrucaoSql = `select ifnull(nickname, 'Nenhum Registro') as nickname,  ifnull(sum(pontos), 0) as qtdPontos
     from pontuacao
     join usuario on idUsuario = fkUsuario 
-    group by idUsuario
+    group by idUsuario order by qtdPontos
     limit 3;
     `;
 
@@ -28,7 +28,7 @@ function buscarUltimasMedidasCurtidas(idUsuario) {
     var instrucaoSql = `select ifnull(nickname, 'Nenhum Registro') as nickname, ifnull(count(idUsuario), 0) as qtdCurtidas
 from curtir
 join usuario on idUsuario = fkUsuario 
-group by nickname;
+group by nickname order by qtdCurtidas desc limit 3;
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);

@@ -145,14 +145,14 @@ insert into curtir values
 select ifnull(nickname, 'Nenhum Registro') as nickname, ifnull(count(idUsuario), 0) as qtdCurtidas
 from curtir
 join usuario on idUsuario = fkUsuario 
-group by nickname order by qtdCurtidas desc
+group by nickname order by qtdCurtidas desc limit 3
 ;
 
 -- select pro grafico do index - pontuacao
 select ifnull(nickname, 'Nenhum Registro') as nickname,  ifnull(sum(pontos), 0) as qtdPontos
 from pontuacao
 join usuario on idUsuario = fkUsuario 
-group by idUsuario
+group by idUsuario order by qtdPontos desc
 limit 3;
 
 -- select pra página do usuário - pontuacao
