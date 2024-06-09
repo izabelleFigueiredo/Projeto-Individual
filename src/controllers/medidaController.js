@@ -111,7 +111,7 @@ function obterDadosUserCurtidas(req, res) {
     var idUsuario = req.params.idUsuario;
     var idPostagem = req.params.idPostagem;
 
-    medidaModel.obterDadosUserCurtidas(idUsuario, idPostagem).then(function (resultado) {
+    medidaModel.obterDadosUserCurtidas(idUsuario).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {

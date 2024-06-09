@@ -81,6 +81,7 @@
                     throw "Nenhum resultado encontrado!!";
                 }
                 resposta.json().then(function (resposta) {
+                    resposta.reverse()
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
 
                     var feed = document.getElementById("comentarios");

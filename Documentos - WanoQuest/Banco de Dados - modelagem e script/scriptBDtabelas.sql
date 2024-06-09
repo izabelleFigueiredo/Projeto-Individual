@@ -165,7 +165,7 @@ select count(fkUsuario) as qtdQuizRealizado from pontuacao where fkUsuario = 3;
 select count(fkUsuario) as qtdPostsRealizados from postagem where fkUsuario = 2;
 
 -- select pra página do usuário - curtidas recebidas
-select count(fkPostagem) as qtdCurtidasRecebidas from curtir where fkUsuario = 2;
+select count(fkPostagem) as qtdCurtidasRecebidas from curtir where fkUsuario = 6;
 
 -- insert into pontuacao (fkUsuario, fkQuiz, pontos)values (1, 1, 18), (2, 1, 14);
 

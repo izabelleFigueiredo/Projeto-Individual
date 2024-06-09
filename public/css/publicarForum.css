@@ -55,7 +55,7 @@ header img {
 
 a:hover {
     transition: 0.3s;
-    color: #BF544B;
+    color: #E7857A;
 }
 
 .opcoes {
@@ -157,9 +157,10 @@ button:hover {
     transform: scale(1.05);
 }
 .lemb img {
-    width: 10vh;
-    height: 10vh;
+    width: 60px;
+    height: 60px;
 }
+
 input {
     box-shadow: 0px 0px 20px 1px #F7BECD;
     border: 1px solid #E3BF23;

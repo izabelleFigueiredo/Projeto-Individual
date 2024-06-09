@@ -40,25 +40,25 @@
             <div class="dado">
                 <h3>Curtidas Recebidas</h3>
                 <div class="dadoInfo">
-                    <h2> <span id="curtidasRecebidas"> XX </span> </h2>
+                    <h2> <span id="curtidasRecebidas"> 0 </span> </h2>
                 </div>
             </div>
             <div class="dado">
                 <h3> Pontuação </h3>
                 <div class="dadoInfo">
-                    <h2> <span id="pontuacaoTotal"> XX </span> </h2>
+                    <h2> <span id="pontuacaoTotal"> 0 </span> </h2>
                 </div>
             </div>
             <div class="dado">
                 <h3>Quizzes Realizados</h3>
                 <div class="dadoInfo">
-                    <h2> <span id="quizzesRealizados"> XX </span> </h2>
+                    <h2> <span id="quizzesRealizados"> 0 </span> </h2>
                 </div>
             </div>
             <div class="dado">
                 <h3>Suas Postagens</h3>
                 <div class="dadoInfo">
-                    <h2> <span id="postagensRealizadas"> XX </span> </h2>
+                    <h2> <span id="postagensRealizadas"> 0 </span> </h2>
                 </div>
             </div>
 
@@ -136,17 +136,17 @@
     }
 
     function obterDadosUserCurtidas() {
-        fetch(`/medidas/userCurtidas/${idUsuario}/${idPostagem}`).then(function (response) {
+        fetch(`/medidas/userCurtidas/${idUsuario}`).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     // resposta.reverse();
                     var totalCurtidas = resposta[0].qtdCurtidasRecebidas;
-
-                    curtidasRecebidas.innerHTML = totalCurtidas
+                    curtidasRecebidas.innerHTML = totalCurtidas;
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
+                curtidasRecebidas.innerHTML = 0;
             }
         })
             .catch(function (error) {

@@ -38,7 +38,7 @@ router.get("/userPost/:idUsuario", function (req, res) {
 })
 
 // rota utilizada pra obter o total de curtidas recebidas pelo usuário
-router.get("/userCurtidas/:idUsuario/:idPostagem", function (req, res) {
+router.get("/userCurtidas/:idUsuario", function (req, res) {
     medidaController.obterDadosUserCurtidas(req, res);
 })
 

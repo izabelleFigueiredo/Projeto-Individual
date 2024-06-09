@@ -85,7 +85,7 @@ header {
 
 a:hover {
     transition: 0.3s;
-    color: #BF544B;
+    color: #E7857A;
 }
 
 /* CONTEÚDO DA PÁGINA */
@@ -114,7 +114,7 @@ a:hover {
     animation: moveUpDown 3s ease-in-out infinite;
     position: relative;
     z-index: 1;
-    filter: drop-shadow(5px 5px 5px #F7BECD);
+    filter: drop-shadow(5px 5px 5px #E7857A);
     /* pra imagem nao sobrepor o header (quanto maior, mais camada acima ele fica) */
 }
 
@@ -146,10 +146,12 @@ a:hover {
 
 .dir h3 {
     font-size: 50px;
+    color: #fff;
 }
 
 .dir h1 {
     color: #BF544B;
+    font-size: 45px;
 }
 
 .imagens {
@@ -189,6 +191,7 @@ a:hover {
 
 .divPlacares h1 {
     font-size: 40px;
+    color: #BF544B;
 }
 
 .divPlacares h4 {
@@ -249,6 +252,8 @@ a:hover {
     align-items: center;
     padding: 100px 0;
     justify-content: space-between;
+    color: #fff;
+    line-height: 1.6;
 }
 
 .dir1 {
@@ -262,6 +267,7 @@ a:hover {
 .esq1 img,
 .dir2 img {
     transition: .4s;
+    filter: drop-shadow(5px 5px 5px #fff);
 }
 
 .esq1 img:hover,

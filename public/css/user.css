@@ -1,10 +1,13 @@
 /* 
-#5681A6; azul escuro
-#96C6D9;  azul claro
-#D9AA8F; 
- bege
-#59372A; marrom
-#BF544B;  vermelho */
+##1EC6D9 azul
+#E3BF23 amarelo
+#EFEDEE branco
+#F7BECD rosa
+#E7857A bege
+#A65712 laranja escuro
+#8C2727 vermelho
+ */
+
 
 * {
     margin: 0;
@@ -52,7 +55,7 @@ header img{
 }
 a:hover{
     transition: 0.3s;
-    color: #BF544B;
+    color: #E7857A;
 }
 .opcoes {
     display: flex;
@@ -67,7 +70,7 @@ a:hover{
 /* CONTEÚDO DA PÁGINA  */
 
 .container {
-    background-color: #F7BECD;
+    /* background-color: #F7BECD; */
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -135,7 +138,7 @@ a:hover{
     padding: 15px;
 }
 .dadoInfo {
-    background-color: #5681A6;
+    background-color: #F7BECD;
     border-radius: 15px;
     font-size: 26px;
     /* padding: 2% 10%; */

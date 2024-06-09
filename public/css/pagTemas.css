@@ -65,7 +65,7 @@ header img {
 
 a:hover {
     transition: 0.3s;
-    color: #BF544B;
+    color: #E7857A;
 }
 
 .opcoes {
@@ -103,6 +103,25 @@ a:hover {
     gap: 40px;
     font-size: 22px;
     padding-top: 100px;
+    line-height: 1.6;
+}
+.conteudo a {
+    color: #8C2727;
+}
+.conteudo a:hover {
+    color: #BF544B;
+}
+
+.redirecionar {
+    color: #8C2727;
+    text-align: center;
+    text-decoration: underline;
+    transition: .4s;
+}
+
+.redirecionar:hover {
+   cursor: pointer;
+   color: #fff
 }
 
 .titulo {
